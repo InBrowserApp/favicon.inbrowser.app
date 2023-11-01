@@ -20,5 +20,6 @@ onMounted(async () => {
 
 const iosOptions = ref<iOSWebClipOptions>({
   backgroundColor: "#000000",
+  margin: 0,
 });
 </script>

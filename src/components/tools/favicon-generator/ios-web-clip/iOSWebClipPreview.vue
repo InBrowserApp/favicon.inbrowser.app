@@ -3,7 +3,7 @@
     <img :src="PreviewBackground" class="background" />
     <div class="icon-container">
       <div class="icon-background" :style="iconBackgroundStyle" />
-      <img :src="imageURL" class="icon" />
+      <img :src="imageURL" class="icon" :style="iconStyle" />
     </div>
 
     <div class="name">{{ name ?? "App" }}</div>
@@ -30,6 +30,10 @@ const imageURL = useObjectUrl(image);
 
 const iconBackgroundStyle = computed(() => ({
   "--icon-background-color": props.options.backgroundColor,
+}));
+
+const iconStyle = computed(() => ({
+  "--icon-margin": (props.options.margin / 2).toString() + "%",
 }));
 </script>
 
@@ -68,6 +72,8 @@ const iconBackgroundStyle = computed(() => ({
   position: absolute;
   width: 100%;
   height: 100%;
+  box-sizing: border-box;
+  padding: var(--icon-margin);
 }
 
 .icon-background {

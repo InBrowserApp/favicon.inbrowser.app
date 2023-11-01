@@ -1,3 +1,4 @@
 export interface iOSWebClipOptions {
-  backgroundColor?: string;
+  backgroundColor: string;
+  margin: number;
 }
