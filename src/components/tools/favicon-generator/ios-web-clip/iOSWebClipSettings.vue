@@ -1,6 +1,6 @@
 <template>
   <n-tabs type="line" animated>
-    <n-tab-pane name="background" tab="Background" display-directive="show">
+    <n-tab-pane name="settings" tab="Settings" display-directive="show">
       <div style="margin-bottom: 0.25em">Background Color</div>
       <n-color-picker
         :show-alpha="false"
