@@ -1,7 +1,6 @@
 <template>
   <ImageUpload @update:file="image = $event" />
-  <img :src="imageURL" />
-  <img :src="preprocessedImageURL" />
+  <iOSWebClip :image="preprocessedImage" />
 </template>
 
 <script setup lang="ts">
@@ -9,10 +8,11 @@ import ImageUpload from "./ImageUpload.vue";
 import { ref } from "vue";
 import { useObjectUrl, computedAsync } from "@vueuse/core";
 import { preprocessImage } from "@/utils/image/preprocess-image";
+import iOSWebClip from "./ios-web-clip/iOSWebClip.vue";
 
 const image = ref<Blob | undefined>(undefined);
 const imageURL = useObjectUrl(image);
-const preprocessedImage  = computedAsync(async () => {
+const preprocessedImage = computedAsync(async () => {
   if (image.value === undefined) return undefined;
   return await preprocessImage(image.value);
 });
