@@ -1,23 +1,22 @@
 <template>
   <ImageUpload @update:file="image = $event" />
-  <iOSWebClip :image="preprocessedImage" v-model:options="iosOptions" />
+  <iOSWebClip :image="image" v-model:options="iosOptions" />
 </template>
 
 <script setup lang="ts">
 import ImageUpload from "./ImageUpload.vue";
-import { ref } from "vue";
-import { useObjectUrl, computedAsync } from "@vueuse/core";
-import { preprocessImage } from "@/utils/image/preprocess-image";
+import { ref, onMounted } from "vue";
 import iOSWebClip from "./ios-web-clip/iOSWebClip.vue";
 import type { iOSWebClipOptions } from "@/utils/favicon-generator/ios-web-clip";
 
 const image = ref<Blob | undefined>(undefined);
-const imageURL = useObjectUrl(image);
-const preprocessedImage = computedAsync(async () => {
-  if (image.value === undefined) return undefined;
-  return await preprocessImage(image.value);
+// FIXME: temp image
+
+onMounted(async () => {
+  const res = await fetch("/pwa-512x512.png");
+  const blob = await res.blob();
+  image.value = blob;
 });
-const preprocessedImageURL = useObjectUrl(preprocessedImage);
 
 const iosOptions = ref<iOSWebClipOptions>({
   backgroundColor: "#000000",
