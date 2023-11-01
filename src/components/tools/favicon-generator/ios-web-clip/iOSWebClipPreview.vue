@@ -23,9 +23,8 @@ const imageURL = useObjectUrl(image);
 
 <style scoped>
 .container {
-  --container-width: 300px;
   position: relative;
-  width: 300px;
+  width: 100%;
   /* 1126 * 892 */
   aspect-ratio: 1126 / 892;
   overflow: hidden;
