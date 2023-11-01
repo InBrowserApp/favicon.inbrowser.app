@@ -1,8 +1,11 @@
 <template>
   <div class="container">
     <img :src="PreviewBackground" class="background" />
-    <div class="icon-background" :style="iconBackgroundStyle" />
-    <img :src="imageURL" class="icon" />
+    <div class="icon-container">
+      <div class="icon-background" :style="iconBackgroundStyle" />
+      <img :src="imageURL" class="icon" />
+    </div>
+
     <div class="name">{{ name ?? "App" }}</div>
   </div>
 </template>
@@ -48,7 +51,7 @@ const iconBackgroundStyle = computed(() => ({
   object-fit: cover;
 }
 
-.icon {
+.icon-container {
   --size: 16.2%;
   position: absolute;
   width: var(--size);
@@ -58,19 +61,20 @@ const iconBackgroundStyle = computed(() => ({
 
   object-fit: contain;
   border-radius: 20%;
+  overflow: hidden;
+}
+
+.icon {
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
 .icon-background {
-  --size: 16.2%;
-  position: absolute;
-  width: var(--size);
-  aspect-ratio: 1;
-  left: 76.7%;
-  top: 69.5%;
   background-color: var(--icon-background-color);
-
-  object-fit: contain;
-  border-radius: 20%;
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
 .name {
