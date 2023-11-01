@@ -1,7 +1,7 @@
 <template>
   <span>
     <div class="inbrowser-app-text">InBrowser.App</div>
-    <div class="site-sub-name">IP</div>
+    <div class="site-sub-name">Favicon</div>
   </span>
 </template>
 
