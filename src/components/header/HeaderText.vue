@@ -10,7 +10,7 @@
       </router-link>
     </n-h1>
     <n-h2 class="h2">
-      Favicon InBrowser.APP is a tool to generate favicon. Fully runs in your browser. No
+      Favicon InBrowser.App is a tool to generate favicon. Fully runs in your browser. No
       server-side code.
     </n-h2>
   </div>

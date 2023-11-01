@@ -20,12 +20,12 @@ import { Icons20Regular } from "@vicons/fluent";
 import { useHead } from "@vueuse/head";
 
 useHead({
-  title: "Favicon InBrowser.APP",
+  title: "Favicon InBrowser.App",
   meta: [
     {
       name: "description",
       content:
-        "Favicon InBrowser.APP is a tool to generate favicon. Fully runs in your browser. No server-side code.",
+        "Favicon InBrowser.App is a tool to generate favicon. Fully runs in your browser. No server-side code.",
     },
   ],
   link: [

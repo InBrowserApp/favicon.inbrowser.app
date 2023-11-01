@@ -1,8 +1,8 @@
-# 📄 Favicon InBrowser.APP
+# 📄 Favicon InBrowser.App
 
 https://favicon.inbrowser.app
 
-Favicon InBrowser.APP is a tool to generate favicon. Fully runs in your browser. No server-side code.
+Favicon InBrowser.App is a tool to generate favicon. Fully runs in your browser. No server-side code.
 
 ## ✨ Features
 

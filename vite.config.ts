@@ -21,10 +21,10 @@ export default defineConfig({
         maximumFileSizeToCacheInBytes: 10000000,
       },
       manifest: {
-        name: "Favicon InBrowser.APP",
+        name: "Favicon InBrowser.App",
         short_name: "IP",
         description:
-          "Favicon InBrowser.APP is a tool to generate favicon. Fully runs in your browser. No server-side code.",
+          "Favicon InBrowser.App is a tool to generate favicon. Fully runs in your browser. No server-side code.",
         theme_color: "#ffffff",
         icons: [
           {
