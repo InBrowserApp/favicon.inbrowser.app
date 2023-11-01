@@ -73,10 +73,12 @@ const iconStyle = computed(() => ({
   width: 100%;
   height: 100%;
   box-sizing: border-box;
+  will-change: padding;
   padding: var(--icon-margin);
 }
 
 .icon-background {
+  will-change: background-color;
   background-color: var(--icon-background-color);
   position: absolute;
   width: 100%;
