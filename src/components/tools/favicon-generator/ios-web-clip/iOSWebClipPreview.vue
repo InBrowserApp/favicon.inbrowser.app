@@ -75,6 +75,7 @@ const iconStyle = computed(() => ({
   box-sizing: border-box;
   will-change: padding;
   padding: var(--icon-margin);
+  transition: padding 0.2s ease-in-out;
 }
 
 .icon-background {
@@ -83,6 +84,7 @@ const iconStyle = computed(() => ({
   position: absolute;
   width: 100%;
   height: 100%;
+  transition: background-color 0.2s ease-in-out;
 }
 
 .name {
