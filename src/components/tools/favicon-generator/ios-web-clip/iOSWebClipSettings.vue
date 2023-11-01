@@ -4,6 +4,7 @@
       <n-color-picker
         :show-alpha="false"
         v-model:value="options.backgroundColor"
+        :modes="['hex']"
       />
       <n-slider v-model:value="options.margin" :step="1" />
       {{ options.margin }}
