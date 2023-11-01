@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <img :src="PreviewBackground" class="background" />
+    <div class="icon-background" :style="iconBackgroundStyle" />
     <img :src="imageURL" class="icon" />
     <div class="name">{{ name ?? "App" }}</div>
   </div>
@@ -10,6 +11,7 @@
 import PreviewBackground from "./ios-web-clip-preview-background.webp";
 import { useObjectUrl } from "@vueuse/core";
 import type { iOSWebClipOptions } from "@/utils/favicon-generator/ios-web-clip";
+import { computed } from "vue";
 
 import { toRef } from "vue";
 
@@ -22,6 +24,10 @@ const props = defineProps<{
 const image = toRef(props, "image");
 
 const imageURL = useObjectUrl(image);
+
+const iconBackgroundStyle = computed(() => ({
+  "--icon-background-color": props.options.backgroundColor,
+}));
 </script>
 
 <style scoped>
@@ -49,6 +55,19 @@ const imageURL = useObjectUrl(image);
   aspect-ratio: 1;
   left: 76.7%;
   top: 69.5%;
+
+  object-fit: contain;
+  border-radius: 20%;
+}
+
+.icon-background {
+  --size: 16.2%;
+  position: absolute;
+  width: var(--size);
+  aspect-ratio: 1;
+  left: 76.7%;
+  top: 69.5%;
+  background-color: var(--icon-background-color);
 
   object-fit: contain;
   border-radius: 20%;
