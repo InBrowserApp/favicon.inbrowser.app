@@ -30,6 +30,12 @@
         </div>
       </div>
     </n-tab-pane>
+    <n-tab-pane name="download" tab="Download" display-directive="show">
+      <n-button size="small" text @click="download">
+        <n-icon :component="ArrowDownload16Filled" />
+        Download apple-touch-icon.png
+      </n-button>
+    </n-tab-pane>
   </n-tabs>
 </template>
 
@@ -46,10 +52,12 @@ import {
 import type { iOSWebClipOptions } from "@/utils/favicon-generator/ios-web-clip";
 import { useVModel, useObjectUrl } from "@vueuse/core";
 import ImageUpload from "../ImageUpload.vue";
-import { Delete16Regular } from "@vicons/fluent";
+import { Delete16Regular, ArrowDownload16Filled } from "@vicons/fluent";
 import { toRef, computed } from "vue";
+import { generateOutput } from "@/utils/favicon-generator/ios-web-clip";
 
 const props = defineProps<{
+  image: Blob | undefined;
   options: iOSWebClipOptions;
 }>();
 
@@ -61,6 +69,20 @@ const optionsRef = toRef(props, "options");
 const image = computed<Blob | undefined>(() => optionsRef.value.image);
 
 const imageURL = useObjectUrl(image);
+
+const download = async () => {
+  if (props.image === undefined) {
+    throw new Error("No image");
+  }
+
+  const blob = await generateOutput(props.image, optionsRef.value);
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "apple-touch-icon.png";
+  a.click();
+};
 </script>
 
 <style scoped>

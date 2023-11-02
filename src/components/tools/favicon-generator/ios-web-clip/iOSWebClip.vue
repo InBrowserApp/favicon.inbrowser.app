@@ -9,7 +9,7 @@
       />
     </n-grid-item>
     <n-grid-item :span="3">
-      <iOSWebClipSettings v-model:options="options" />
+      <iOSWebClipSettings :image="image" v-model:options="options" />
     </n-grid-item>
   </n-grid>
 </template>
