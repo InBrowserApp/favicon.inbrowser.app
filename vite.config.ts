@@ -22,7 +22,7 @@ export default defineConfig({
       },
       manifest: {
         name: "Favicon InBrowser.App",
-        short_name: "IP",
+        short_name: "Favicon",
         description:
           "Favicon InBrowser.App is a tool to generate favicon. Fully runs in your browser. No server-side code.",
         theme_color: "#ffffff",
