@@ -1,6 +1,10 @@
 <template>
   <div class="container">
-    <img :src="imageURL" class="image" />
+    <GoogleSearchResult
+      :image="image"
+      :options="options"
+      :generalInfoOptions="generalInfoOptions"
+    />
   </div>
 </template>
 
@@ -9,6 +13,7 @@ import { useObjectUrl } from "@vueuse/core";
 import type { DesktopBrowserOptions } from "@/utils/favicon-generator/desktop-browser";
 import { computed } from "vue";
 import type { GeneralInfoOptions } from "@/utils/favicon-generator/general-info";
+import GoogleSearchResult from "./GoogleSearchResult.vue";
 
 const props = defineProps<{
   image: Blob | undefined;
@@ -26,10 +31,3 @@ const image = computed<Blob | undefined>(() => {
 
 const imageURL = useObjectUrl(image);
 </script>
-
-<style scoped>
-.image {
-  width: 100%;
-  object-fit: contain;
-}
-</style>
