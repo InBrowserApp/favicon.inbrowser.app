@@ -1,7 +1,11 @@
 <template>
   <ImageUpload @update:file="image = $event" />
   <GeneralInfo v-model:options="generalInfoOptions" />
-  <DesktopBrowser :image="image" v-model:options="desktopOptions" />
+  <DesktopBrowser
+    :image="image"
+    v-model:options="desktopOptions"
+    :general-info-options="generalInfoOptions"
+  />
   <iOSWebClip
     :image="image"
     v-model:options="iosOptions"
