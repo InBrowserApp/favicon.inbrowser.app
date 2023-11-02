@@ -10,7 +10,11 @@
     >
       <iOSWebClipSettingsDedicatedImage v-model:options="options" />
     </n-tab-pane>
-    <n-tab-pane name="download" tab="Download" display-directive="show">
+    <n-tab-pane
+      name="download"
+      tab="Download Separately"
+      display-directive="show"
+    >
       <iOSWebClipSettingsDownload :options="options" :image="image" />
     </n-tab-pane>
   </n-tabs>
