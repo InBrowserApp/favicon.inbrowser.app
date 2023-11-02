@@ -66,7 +66,8 @@ const image = computed<Blob | undefined>(() => {
   position: relative;
   left: calc(94 / var(--tab-width) * 100%);
   top: calc(20 / var(--tab-height) * 100%);
-  width: 100%;
+  max-width: 65%;
+  overflow: hidden;
 
   font-size: calc(0.3 * var(--chrome-tab-preview-tab-height));
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
