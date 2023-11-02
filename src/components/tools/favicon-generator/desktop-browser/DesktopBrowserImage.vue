@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    <img :src="imageURL" class="image" />
+  <div class="desktop-browser-container">
+    <img :src="imageURL" class="desktop-browser-image" />
   </div>
 </template>
 
@@ -26,14 +26,14 @@ const imageURL = useObjectUrl(image);
 </script>
 
 <style scoped>
-.container {
+.desktop-browser-container {
   width: 100%;
   aspect-ratio: 1;
   object-fit: contain;
   overflow: hidden;
 }
 
-.image {
+.desktop-browser-image {
   max-width: 100%;
   max-height: 100%;
 }
