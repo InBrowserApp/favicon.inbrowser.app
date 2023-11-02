@@ -7,11 +7,13 @@
         <div class="notranslate TbwUpd NJjxre iUh30 ojE3Fb">
           <span class="H9lube"
             ><div class="eqA2re NjwKYd Vwoesf" aria-hidden="true">
-              <img
+              <div
                 class="XNo5Ab"
                 :src="imageURL"
                 style="height: 18px; width: 18px"
-              /></div
+              >
+                <DesktopBrowserImage :image="image" :options="options" />
+              </div></div
           ></span>
           <div>
             <span class="VuuXrf">{{ generalInfoOptions.name }}</span>
@@ -71,6 +73,7 @@ import { useObjectUrl } from "@vueuse/core";
 import type { DesktopBrowserOptions } from "@/utils/favicon-generator/desktop-browser";
 import { computed } from "vue";
 import type { GeneralInfoOptions } from "@/utils/favicon-generator/general-info";
+import DesktopBrowserImage from "./DesktopBrowserImage.vue";
 
 const props = defineProps<{
   image: Blob | undefined;
