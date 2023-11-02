@@ -17,3 +17,7 @@ Favicon InBrowser.App is a tool to generate favicon. Fully runs in your browser.
 $ npm run dev # Run Dev Server
 $ npm run build # Build to dist/
 ```
+
+## See Also
+
+[Definitive edition of "How to Favicon" in 2023](https://dev.to/masakudamatsu/favicon-nightmare-how-to-maintain-sanity-3al7)
