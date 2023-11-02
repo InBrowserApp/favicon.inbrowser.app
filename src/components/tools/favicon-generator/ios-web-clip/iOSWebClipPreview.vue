@@ -16,15 +16,19 @@ import { useObjectUrl } from "@vueuse/core";
 import type { iOSWebClipOptions } from "@/utils/favicon-generator/ios-web-clip";
 import { computed } from "vue";
 
-import { toRef } from "vue";
-
 const props = defineProps<{
   image: Blob | undefined;
   name?: string;
   options: iOSWebClipOptions;
 }>();
 
-const image = toRef(props, "image");
+const image = computed<Blob | undefined>(() => {
+  if (props.options.image) {
+    return props.options.image;
+  } else {
+    return props.image;
+  }
+});
 
 const imageURL = useObjectUrl(image);
 
