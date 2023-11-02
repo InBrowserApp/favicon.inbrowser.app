@@ -2,7 +2,11 @@
   <n-h2 prefix="bar" align-text>iOS Web Clip</n-h2>
   <n-grid x-gap="12" :cols="5">
     <n-grid-item :span="2">
-      <iOSWebClipPreview :image="image" :options="options" />
+      <iOSWebClipPreview
+        :image="image"
+        :options="options"
+        :name="generalInfoOptions.short_name"
+      />
     </n-grid-item>
     <n-grid-item :span="3">
       <iOSWebClipSettings v-model:options="options" />
@@ -17,10 +21,12 @@ import iOSWebClipPreview from "./iOSWebClipPreview.vue";
 import iOSWebClipSettings from "./iOSWebClipSettings.vue";
 import type { iOSWebClipOptions } from "@/utils/favicon-generator/ios-web-clip";
 import { useVModel } from "@vueuse/core";
+import type { GeneralInfoOptions } from "@/utils/favicon-generator/general-info";
 
 const props = defineProps<{
   image: Blob | undefined;
   options: iOSWebClipOptions;
+  generalInfoOptions: GeneralInfoOptions;
 }>();
 
 const emit = defineEmits(["update:options"]);

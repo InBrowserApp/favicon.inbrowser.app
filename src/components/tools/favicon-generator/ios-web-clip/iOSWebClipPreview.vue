@@ -103,6 +103,9 @@ const iconStyle = computed(() => ({
   /* background-color: #ffffffc0; */
   width: 16.2%;
   text-align: center;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 
   /* font: SF Pro, then others */
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,

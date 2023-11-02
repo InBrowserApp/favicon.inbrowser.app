@@ -1,7 +1,11 @@
 <template>
   <ImageUpload @update:file="image = $event" />
   <GeneralInfo v-model:options="generalInfoOptions" />
-  <iOSWebClip :image="image" v-model:options="iosOptions" />
+  <iOSWebClip
+    :image="image"
+    v-model:options="iosOptions"
+    :general-info-options="generalInfoOptions"
+  />
 </template>
 
 <script setup lang="ts">
