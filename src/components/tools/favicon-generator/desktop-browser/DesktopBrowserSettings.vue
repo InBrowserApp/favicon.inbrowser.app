@@ -4,6 +4,13 @@
       <DesktopBrowserSettingsDisplay v-model:options="options" />
     </n-tab-pane>
     <n-tab-pane
+      name="dedicated-image"
+      tab="Dedicated Image"
+      display-directive="show"
+    >
+      <DesktopBrowserSettingsDedicatedImage v-model:options="options" />
+    </n-tab-pane>
+    <n-tab-pane
       name="download"
       tab="Download Separately"
       display-directive="show"
@@ -19,6 +26,7 @@ import type { DesktopBrowserOptions } from "@/utils/favicon-generator/desktop-br
 import { useVModel } from "@vueuse/core";
 import DesktopBrowserSettingsDisplay from "./DesktopBrowserSettingsDisplay.vue";
 import DesktopBrowserSettingsDownload from "./DesktopBrowserSettingsDownload.vue";
+import DesktopBrowserSettingsDedicatedImage from "./DesktopBrowserSettingsDedicatedImage.vue";
 
 const props = defineProps<{
   image: Blob | undefined;

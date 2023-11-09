@@ -3,7 +3,7 @@ import type { DesktopBrowserOptions } from "./types";
 export function getHTMLCode(blob?: Blob, options: DesktopBrowserOptions) {
   const image = options?.image ?? blob;
   if (image === undefined) {
-    throw new Error("Image is undefined");
+    return "";
   }
 
   const lines = [];
