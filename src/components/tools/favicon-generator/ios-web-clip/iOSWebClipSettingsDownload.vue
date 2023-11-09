@@ -1,4 +1,10 @@
 <template>
+  <n-p>
+    <n-text depth="3">
+      <n-icon :component="Sparkle16Filled" style="vertical-align: -0.1em" />
+      All files are losslessly minified using oxipng.
+    </n-text>
+  </n-p>
   <n-button size="small" text @click="download">
     <n-icon :component="ArrowDownload16Filled" />
     Download apple-touch-icon.png
@@ -6,9 +12,9 @@
 </template>
 
 <script setup lang="ts">
-import { NButton, NIcon } from "naive-ui";
+import { NButton, NIcon, NP, NText } from "naive-ui";
 import type { iOSWebClipOptions } from "@/utils/favicon-generator/ios-web-clip";
-import { ArrowDownload16Filled } from "@vicons/fluent";
+import { ArrowDownload16Filled, Sparkle16Filled } from "@vicons/fluent";
 import { generateOutput } from "@/utils/favicon-generator/ios-web-clip";
 import { computed } from "vue";
 
