@@ -6,9 +6,16 @@
       '--chrome-tab-preview-tab-height': height + 'px',
     }"
   >
-    <img :src="WindowsChromeTabImage" class="chrome-tab-image" ref="tab" />
+    <img :src="chromeTabURL" class="chrome-tab-image" ref="tab" />
     <DesktopBrowserImage :image="image" :options="options" class="icon" />
-    <div class="site-name">{{ generalInfoOptions.name }}</div>
+    <div
+      class="site-name"
+      :style="{
+        color: dark ? 'white' : 'black',
+      }"
+    >
+      {{ generalInfoOptions.name }}
+    </div>
   </div>
 </template>
 
@@ -17,6 +24,7 @@ import type { DesktopBrowserOptions } from "@/utils/favicon-generator/desktop-br
 import { computed } from "vue";
 import type { GeneralInfoOptions } from "@/utils/favicon-generator/general-info";
 import WindowsChromeTabImage from "./windows-chrome-tab.webp";
+import WindowsChromeTabImageDark from "./windows-chrome-tab-dark.webp";
 import DesktopBrowserImage from "./DesktopBrowserImage.vue";
 import { ref } from "vue";
 import { useElementSize } from "@vueuse/core";
@@ -28,6 +36,7 @@ const props = defineProps<{
   image: Blob | undefined;
   options: DesktopBrowserOptions;
   generalInfoOptions: GeneralInfoOptions;
+  dark?: boolean;
 }>();
 
 const image = computed<Blob | undefined>(() => {
@@ -35,6 +44,14 @@ const image = computed<Blob | undefined>(() => {
     return props.options.image;
   } else {
     return props.image;
+  }
+});
+
+const chromeTabURL = computed(() => {
+  if (props.dark) {
+    return WindowsChromeTabImageDark;
+  } else {
+    return WindowsChromeTabImage;
   }
 });
 </script>

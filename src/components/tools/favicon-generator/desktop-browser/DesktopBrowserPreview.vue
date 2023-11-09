@@ -10,6 +10,13 @@
       :image="image"
       :options="options"
       :generalInfoOptions="generalInfoOptions"
+      :dark="false"
+    />
+    <ChromeTabPreview
+      :image="image"
+      :options="options"
+      :generalInfoOptions="generalInfoOptions"
+      :dark="true"
     />
   </div>
 </template>
