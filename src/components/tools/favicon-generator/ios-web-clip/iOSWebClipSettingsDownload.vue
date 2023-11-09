@@ -10,18 +10,27 @@ import { NButton, NIcon } from "naive-ui";
 import type { iOSWebClipOptions } from "@/utils/favicon-generator/ios-web-clip";
 import { ArrowDownload16Filled } from "@vicons/fluent";
 import { generateOutput } from "@/utils/favicon-generator/ios-web-clip";
+import { computed } from "vue";
 
 const props = defineProps<{
   image: Blob | undefined;
   options: iOSWebClipOptions;
 }>();
 
+const image = computed<Blob | undefined>(() => {
+  if (props.options.image) {
+    return props.options.image;
+  } else {
+    return props.image;
+  }
+});
+
 const download = async () => {
-  if (props.image === undefined) {
+  if (image.value === undefined) {
     throw new Error("No image");
   }
 
-  const blob = await generateOutput(props.image, props.options);
+  const blob = await generateOutput(image.value, props.options);
   const url = URL.createObjectURL(blob);
 
   const a = document.createElement("a");
