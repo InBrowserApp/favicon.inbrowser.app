@@ -39,6 +39,7 @@ const iosOptions = ref<iOSWebClipOptions>({
 
 const desktopOptions = ref<DesktopBrowserOptions>({
   original: true,
+  background: false,
   backgroundColor: "#FFFFFF",
   backgroundRadius: 0,
   margin: 0,

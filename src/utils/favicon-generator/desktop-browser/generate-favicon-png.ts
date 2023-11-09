@@ -24,7 +24,7 @@ export async function generateFaviconPNG(
   canvas.width = size;
   canvas.height = size;
 
-  if (!options.original) {
+  if (!options.original && options.background) {
     // fill the background with the specified color
     ctx.fillStyle = options.backgroundColor;
     // @ts-ignore

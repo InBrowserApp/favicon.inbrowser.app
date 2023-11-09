@@ -1,7 +1,7 @@
 <template>
   <div class="desktop-browser-container">
     <div
-      v-if="!options.original"
+      v-if="!options.original && options.background"
       class="desktop-browser-image-background"
       :style="iconBackgroundStyle"
     />
