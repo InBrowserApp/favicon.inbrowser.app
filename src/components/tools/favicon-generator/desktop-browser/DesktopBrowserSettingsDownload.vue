@@ -35,6 +35,7 @@ import { ArrowDownload16Filled } from "@vicons/fluent";
 import {
   generateFaviconICO,
   generateFaviconPNG,
+  getHTMLCode,
 } from "@/utils/favicon-generator/desktop-browser";
 import { computed } from "vue";
 
@@ -43,12 +44,20 @@ const props = defineProps<{
   options: DesktopBrowserOptions;
 }>();
 
+const image = computed<Blob | undefined>(() => {
+  if (props.options.image) {
+    return props.options.image;
+  } else {
+    return props.image;
+  }
+});
+
 const downloadico = async () => {
-  if (props.image === undefined) {
+  if (image.value === undefined) {
     throw new Error("No image");
   }
 
-  const blob = await generateFaviconICO(props.image, props.options);
+  const blob = await generateFaviconICO(image.value, props.options);
   const url = URL.createObjectURL(blob);
 
   const a = document.createElement("a");
@@ -58,11 +67,11 @@ const downloadico = async () => {
 };
 
 const download32png = async () => {
-  if (props.image === undefined) {
+  if (image.value === undefined) {
     throw new Error("No image");
   }
 
-  const blob = await generateFaviconPNG(props.image, props.options, 32);
+  const blob = await generateFaviconPNG(image.value, props.options, 32);
   const url = URL.createObjectURL(blob);
 
   const a = document.createElement("a");
@@ -72,11 +81,11 @@ const download32png = async () => {
 };
 
 const download16png = async () => {
-  if (props.image === undefined) {
+  if (image.value === undefined) {
     throw new Error("No image");
   }
 
-  const blob = await generateFaviconPNG(props.image, props.options, 16);
+  const blob = await generateFaviconPNG(image.value, props.options, 16);
   const url = URL.createObjectURL(blob);
 
   const a = document.createElement("a");
@@ -86,11 +95,11 @@ const download16png = async () => {
 };
 
 const downloadSVG = async () => {
-  if (props.image === undefined) {
+  if (image.value === undefined) {
     throw new Error("No image");
   }
 
-  const url = URL.createObjectURL(props.image);
+  const url = URL.createObjectURL(image.value);
   const a = document.createElement("a");
   a.href = url;
   a.download = "favicon.svg";
@@ -98,10 +107,10 @@ const downloadSVG = async () => {
 };
 
 const iconMime = computed(() => {
-  if (props.image === undefined) {
+  if (image.value === undefined) {
     return "image/png";
   } else {
-    return props.image.type;
+    return image.value.type;
   }
 });
 
@@ -110,22 +119,10 @@ const useOriginalSVG = computed(() => {
 });
 
 const code = computed(() => {
-  const lines = [];
-
   if (useOriginalSVG.value) {
-    lines.push(`<link rel="icon" href="/favicon.ico" sizes="48x48" >`);
-    lines.push(
-      `<link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml">`
-    );
+    return getHTMLCode(props.image, props.options);
   } else {
-    lines.push(
-      `<link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32">`
-    );
-    lines.push(
-      `<link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16">`
-    );
+    return getHTMLCode(props.image, props.options);
   }
-
-  return lines.join("\n");
 });
 </script>
