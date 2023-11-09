@@ -1,5 +1,5 @@
 <template>
-  <n-h2 prefix="bar" align-text>Desktop Browser</n-h2>
+  <n-h2 prefix="bar" align-text>Desktop Browser & Google Result</n-h2>
   <n-grid x-gap="12" :cols="5">
     <n-grid-item :span="2">
       <DesktopBrowserPreview
