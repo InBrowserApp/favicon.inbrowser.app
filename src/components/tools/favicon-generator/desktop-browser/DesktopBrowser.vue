@@ -8,7 +8,9 @@
         :general-info-options="generalInfoOptions"
       />
     </n-grid-item>
-    <n-grid-item :span="3"> </n-grid-item>
+    <n-grid-item :span="3">
+      <DesktopBrowserSettings :image="image" :options="options" />
+    </n-grid-item>
   </n-grid>
 </template>
 
@@ -18,6 +20,7 @@ import type { DesktopBrowserOptions } from "@/utils/favicon-generator/desktop-br
 import { useVModel } from "@vueuse/core";
 import DesktopBrowserPreview from "./DesktopBrowserPreview.vue";
 import type { GeneralInfoOptions } from "@/utils/favicon-generator/general-info";
+import DesktopBrowserSettings from "./DesktopBrowserSettings.vue";
 
 const props = defineProps<{
   image: Blob | undefined;
