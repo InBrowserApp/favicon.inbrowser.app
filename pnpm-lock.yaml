@@ -1,6 +1,9 @@
 lockfileVersion: '6.0'
 
 dependencies:
+  '@jsquash/oxipng':
+    specifier: ^2.0.0
+    version: 2.0.0
   '@vueuse/core':
     specifier: ^10.5.0
     version: 10.5.0(vue@3.2.47)
@@ -1568,6 +1571,12 @@ packages:
       '@jridgewell/resolve-uri': 3.1.0
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
+
+  /@jsquash/oxipng@2.0.0:
+    resolution: {integrity: sha512-8Lzlbg026O5tmc30c+nvjxU9jIcv5HhbC061y9Wih5p0RsXOMJfjiVYkZxtn2jP1fB3xUSXSYQmFYjBJUDBwWQ==}
+    dependencies:
+      wasm-feature-detect: 1.6.1
+    dev: false
 
   /@juggle/resize-observer@3.4.0:
     resolution: {integrity: sha512-dfLbk+PwWvFzSxwk3n5ySL0hfBog779o8h68wK/7/APo/7cgyWp5jcXockbxdk5kFRkbeXWm4Fbi9FrdN381sA==}
@@ -4383,6 +4392,10 @@ packages:
       vooks: 0.2.12(vue@3.2.47)
       vue: 3.2.47
     dev: true
+
+  /wasm-feature-detect@1.6.1:
+    resolution: {integrity: sha512-R1i9ED8UlLu/foILNB1ck9XS63vdtqU/tP1MCugVekETp/ySCrBZRk5I/zI67cI1wlQYeSonNm1PLjDHZDNg6g==}
+    dev: false
 
   /webidl-conversions@4.0.2:
     resolution: {integrity: sha512-YQ+BmxuTgd6UXZW3+ICGfyqRyHXVlD5GtQr5+qjiNW7bF0cqrzX500HVXPBOvgXb5YnzDd+h0zqyv61KUD7+Sg==}

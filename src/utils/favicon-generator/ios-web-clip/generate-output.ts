@@ -1,5 +1,6 @@
 import type { iOSWebClipOptions } from "./types";
 import { getImageSize } from "@/utils/image/get-image-size";
+import { optimise } from "@/utils/packages/oxipng";
 
 export async function generateOutput(
   blob: Blob,
@@ -78,5 +79,11 @@ export async function generateOutput(
 
   canvas.remove();
 
-  return newBlob;
+  const arraybuffer = await newBlob.arrayBuffer();
+  const optimisedArrayBuffer = await optimise(arraybuffer);
+  const optimisedBlob = new Blob([optimisedArrayBuffer], {
+    type: newBlob.type,
+  });
+
+  return optimisedBlob;
 }

@@ -1,5 +1,6 @@
 import type { DesktopBrowserOptions } from "./types";
 import { getImageSize } from "@/utils/image/get-image-size";
+import { optimise } from "@/utils/packages/oxipng";
 
 export async function generateFaviconPNG(
   blob: Blob,
@@ -90,5 +91,11 @@ export async function generateFaviconPNG(
 
   canvas.remove();
 
-  return newBlob;
+  const arraybuffer = await newBlob.arrayBuffer();
+  const optimisedArrayBuffer = await optimise(arraybuffer);
+  const optimisedBlob = new Blob([optimisedArrayBuffer], {
+    type: newBlob.type,
+  });
+
+  return optimisedBlob;
 }
