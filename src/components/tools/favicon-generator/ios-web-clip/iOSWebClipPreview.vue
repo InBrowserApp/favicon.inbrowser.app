@@ -1,6 +1,16 @@
 <template>
-  <div class="container">
-    <img :src="PreviewBackground" class="background" />
+  <div
+    class="container"
+    :style="{
+      '--ios-homescreen-background-width': width + 'px',
+      '--ios-homescreen-background-height': height + 'px',
+    }"
+  >
+    <img
+      :src="PreviewBackground"
+      class="background"
+      ref="iosHomescreenBackground"
+    />
     <div class="icon-container">
       <div class="icon-background" :style="iconBackgroundStyle" />
       <img :src="imageURL" class="icon" :style="iconStyle" />
@@ -14,7 +24,11 @@
 import PreviewBackground from "./ios-web-clip-preview-background.webp";
 import { useObjectUrl } from "@vueuse/core";
 import type { iOSWebClipOptions } from "@/utils/favicon-generator/ios-web-clip";
-import { computed } from "vue";
+import { computed, ref } from "vue";
+import { useElementSize } from "@vueuse/core";
+
+const iosHomescreenBackground = ref<HTMLImageElement | null>(null);
+const { width, height } = useElementSize(iosHomescreenBackground);
 
 const props = defineProps<{
   image: Blob | undefined;
@@ -96,7 +110,6 @@ const iconStyle = computed(() => ({
   position: absolute;
   top: 90.5%;
   left: 76.7%;
-  font-size: 70%;
   text-shadow: 0.5px 0.5px 0.5px grey;
   user-select: none;
 
@@ -110,5 +123,7 @@ const iconStyle = computed(() => ({
   /* font: SF Pro, then others */
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+
+  font-size: calc(0.04 * var(--ios-homescreen-background-height));
 }
 </style>
