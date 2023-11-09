@@ -1,6 +1,9 @@
 import type { DesktopBrowserOptions } from "./types";
 
-export function getHTMLCode(blob?: Blob, options: DesktopBrowserOptions) {
+export function getHTMLCode(
+  blob: Blob | undefined,
+  options: DesktopBrowserOptions
+) {
   const image = options?.image ?? blob;
   if (image === undefined) {
     return "";
@@ -8,7 +11,7 @@ export function getHTMLCode(blob?: Blob, options: DesktopBrowserOptions) {
 
   const lines = [];
 
-  if (blob.type === "image/svg+xml" && options.original) {
+  if (image.type === "image/svg+xml" && options.original) {
     lines.push(`<link rel="icon" href="/favicon.ico" sizes="48x48" >`);
     lines.push(
       `<link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml">`

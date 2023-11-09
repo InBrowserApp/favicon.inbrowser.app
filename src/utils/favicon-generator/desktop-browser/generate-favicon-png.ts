@@ -26,6 +26,7 @@ export async function generateFaviconPNG(
   if (!options.original) {
     // fill the background with the specified color
     ctx.fillStyle = options.backgroundColor;
+    // @ts-ignore
     ctx.roundRect(
       0,
       0,
