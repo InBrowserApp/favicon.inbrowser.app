@@ -3,6 +3,13 @@
     <n-tab-pane name="settings" tab="Settings" display-directive="show">
       <DesktopBrowserSettingsDisplay v-model:options="options" />
     </n-tab-pane>
+    <n-tab-pane
+      name="download"
+      tab="Download Separately"
+      display-directive="show"
+    >
+      <DesktopBrowserSettingsDownload :options="options" :image="image" />
+    </n-tab-pane>
   </n-tabs>
 </template>
 
@@ -11,6 +18,7 @@ import { NTabs, NTabPane } from "naive-ui";
 import type { DesktopBrowserOptions } from "@/utils/favicon-generator/desktop-browser";
 import { useVModel } from "@vueuse/core";
 import DesktopBrowserSettingsDisplay from "./DesktopBrowserSettingsDisplay.vue";
+import DesktopBrowserSettingsDownload from "./DesktopBrowserSettingsDownload.vue";
 
 const props = defineProps<{
   image: Blob | undefined;
