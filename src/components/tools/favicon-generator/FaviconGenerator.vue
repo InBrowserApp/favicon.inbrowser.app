@@ -56,6 +56,9 @@ const pwaOptions = ref<PAWOptions>({
   background: false,
   backgroundColor: "#FFFFFF",
   backgroundRadius: 0,
+  maskable: true,
+  maskableBackgroundColor: "#FFFFFF",
+  maskableMargin: 0,
   margin: 0,
 });
 
