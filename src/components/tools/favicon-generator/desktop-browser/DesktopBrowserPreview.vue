@@ -18,6 +18,7 @@
       :generalInfoOptions="generalInfoOptions"
       :dark="true"
     />
+    <ChromeTabDarkNote v-if="image?.type === 'image/svg+xml'" />
   </div>
 </template>
 
@@ -27,6 +28,7 @@ import type { DesktopBrowserOptions } from "@/utils/favicon-generator/desktop-br
 import type { GeneralInfoOptions } from "@/utils/favicon-generator/general-info";
 import GoogleSearchResult from "./GoogleSearchResult.vue";
 import ChromeTabPreview from "./ChromeTabPreview.vue";
+import ChromeTabDarkNote from "./ChromeTabDarkNote.vue";
 
 defineProps<{
   image: Blob | undefined;
