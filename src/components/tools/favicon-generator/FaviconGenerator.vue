@@ -11,6 +11,11 @@
     v-model:options="iosOptions"
     :general-info-options="generalInfoOptions"
   />
+  <PWA
+    :image="image"
+    v-model:options="pwaOptions"
+    :general-info-options="generalInfoOptions"
+  />
 </template>
 
 <script setup lang="ts">
@@ -22,6 +27,8 @@ import type { iOSWebClipOptions } from "@/utils/favicon-generator/ios-web-clip";
 import type { GeneralInfoOptions } from "@/utils/favicon-generator/general-info";
 import DesktopBrowser from "./desktop-browser/DesktopBrowser.vue";
 import type { DesktopBrowserOptions } from "@/utils/favicon-generator/desktop-browser";
+import PWA from "./pwa/PWA.vue";
+import type { PAWOptions } from "@/utils/favicon-generator/pwa";
 
 const image = ref<Blob | undefined>(undefined);
 // FIXME: temp image
@@ -39,6 +46,13 @@ const iosOptions = ref<iOSWebClipOptions>({
 
 const desktopOptions = ref<DesktopBrowserOptions>({
   original: true,
+  background: false,
+  backgroundColor: "#FFFFFF",
+  backgroundRadius: 0,
+  margin: 0,
+});
+
+const pwaOptions = ref<PAWOptions>({
   background: false,
   backgroundColor: "#FFFFFF",
   backgroundRadius: 0,
