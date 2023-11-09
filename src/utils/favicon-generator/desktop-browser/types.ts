@@ -1,5 +1,7 @@
 export interface DesktopBrowserOptions {
-  backgroundColor?: string;
-  margin?: number;
+  original: boolean;
+  backgroundColor: string;
+  backgroundRadius: number;
+  margin: number;
   image?: Blob;
 }

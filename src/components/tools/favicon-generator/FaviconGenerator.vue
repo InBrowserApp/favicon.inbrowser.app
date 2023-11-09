@@ -37,7 +37,12 @@ const iosOptions = ref<iOSWebClipOptions>({
   margin: 0,
 });
 
-const desktopOptions = ref<DesktopBrowserOptions>({});
+const desktopOptions = ref<DesktopBrowserOptions>({
+  original: true,
+  backgroundColor: "#FFFFFF",
+  backgroundRadius: 0,
+  margin: 0,
+});
 
 const generalInfoOptions = ref<GeneralInfoOptions>({
   name: "App",
