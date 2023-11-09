@@ -3,13 +3,18 @@
     <n-icon :component="ArrowDownload16Filled" />
     Download favicon.ico
   </n-button>
+
+  <n-p>
+    <n-code language="html" :code="code" />
+  </n-p>
 </template>
 
 <script setup lang="ts">
-import { NButton, NIcon } from "naive-ui";
+import { NButton, NIcon, NCode, NP } from "naive-ui";
 import type { DesktopBrowserOptions } from "@/utils/favicon-generator/desktop-browser";
 import { ArrowDownload16Filled } from "@vicons/fluent";
 import { generateFaviconICO } from "@/utils/favicon-generator/desktop-browser";
+import { computed } from "vue";
 
 const props = defineProps<{
   image: Blob | undefined;
@@ -29,4 +34,8 @@ const download = async () => {
   a.download = "favicon.ico";
   a.click();
 };
+
+const code = computed(() => {
+  return `<link rel="icon" href="/favicon.ico" sizes="48x48" >`;
+});
 </script>

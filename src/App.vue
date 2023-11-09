@@ -1,5 +1,5 @@
 <template>
-  <n-config-provider :theme="theme">
+  <n-config-provider :theme="theme" :hljs="hljs">
     <n-global-style />
     <n-message-provider placement="bottom">
       <n-loading-bar-provider>
@@ -24,9 +24,12 @@ import {
 import { RouterView } from "vue-router";
 import { computed } from "vue";
 import TheHeader from "@/components/header/TheHeader.vue";
+import hljs from "highlight.js/lib/core";
+import html from "highlight.js/lib/languages/javascript";
 
 const osThemeRef = useOsTheme();
 const theme = computed(() => (osThemeRef.value === "dark" ? darkTheme : null));
+hljs.registerLanguage("html", html);
 </script>
 
 <style>
