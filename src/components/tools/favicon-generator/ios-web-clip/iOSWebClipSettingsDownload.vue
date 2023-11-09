@@ -9,13 +9,20 @@
     <n-icon :component="ArrowDownload16Filled" />
     Download apple-touch-icon.png
   </n-button>
+
+  <n-p>
+    <n-code language="html" :code="code" :word-wrap="true" />
+  </n-p>
 </template>
 
 <script setup lang="ts">
-import { NButton, NIcon, NP, NText } from "naive-ui";
+import { NButton, NIcon, NP, NText, NCode } from "naive-ui";
 import type { iOSWebClipOptions } from "@/utils/favicon-generator/ios-web-clip";
 import { ArrowDownload16Filled, Sparkle16Filled } from "@vicons/fluent";
-import { generateOutput } from "@/utils/favicon-generator/ios-web-clip";
+import {
+  generateOutput,
+  getHTMLCode,
+} from "@/utils/favicon-generator/ios-web-clip";
 import { computed } from "vue";
 
 const props = defineProps<{
@@ -44,4 +51,8 @@ const download = async () => {
   a.download = "apple-touch-icon.png";
   a.click();
 };
+
+const code = computed(() => {
+  return getHTMLCode();
+});
 </script>
