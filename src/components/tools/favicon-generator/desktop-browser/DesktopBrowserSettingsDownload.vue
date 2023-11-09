@@ -36,6 +36,7 @@ import {
   generateFaviconICO,
   generateFaviconPNG,
   getHTMLCode,
+  generateFaviconSVG,
 } from "@/utils/favicon-generator/desktop-browser";
 import { computed } from "vue";
 
@@ -99,7 +100,9 @@ const downloadSVG = async () => {
     throw new Error("No image");
   }
 
-  const url = URL.createObjectURL(image.value);
+  const blob = await generateFaviconSVG(image.value, props.options);
+  const url = URL.createObjectURL(blob);
+
   const a = document.createElement("a");
   a.href = url;
   a.download = "favicon.svg";

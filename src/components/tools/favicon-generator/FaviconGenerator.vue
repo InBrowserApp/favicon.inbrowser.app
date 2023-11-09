@@ -27,7 +27,7 @@ const image = ref<Blob | undefined>(undefined);
 // FIXME: temp image
 
 onMounted(async () => {
-  const res = await fetch("/pwa-512x512.png");
+  const res = await fetch("/favicon.svg");
   const blob = await res.blob();
   image.value = blob;
 });
