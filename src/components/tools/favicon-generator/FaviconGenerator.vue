@@ -28,7 +28,7 @@ import type { GeneralInfoOptions } from "@/utils/favicon-generator/general-info"
 import DesktopBrowser from "./desktop-browser/DesktopBrowser.vue";
 import type { DesktopBrowserOptions } from "@/utils/favicon-generator/desktop-browser";
 import PWA from "./pwa/PWA.vue";
-import type { PAWOptions } from "@/utils/favicon-generator/pwa";
+import type { PWAOptions } from "@/utils/favicon-generator/pwa";
 
 const image = ref<Blob | undefined>(undefined);
 // FIXME: temp image
@@ -52,7 +52,7 @@ const desktopOptions = ref<DesktopBrowserOptions>({
   margin: 0,
 });
 
-const pwaOptions = ref<PAWOptions>({
+const pwaOptions = ref<PWAOptions>({
   background: false,
   backgroundColor: "#FFFFFF",
   backgroundRadius: 0,
