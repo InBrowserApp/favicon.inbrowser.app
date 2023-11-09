@@ -6,21 +6,15 @@ export async function generateFaviconICO(
   blob: Blob,
   options: DesktopBrowserOptions
 ): Promise<Blob> {
-  const png16 = await generateFaviconPNG(blob, options, 16);
-  const png32 = await generateFaviconPNG(blob, options, 32);
-  const png48 = await generateFaviconPNG(blob, options, 48);
+  const pngs = await Promise.all([
+    generateFaviconPNG(blob, options, 48),
+    generateFaviconPNG(blob, options, 32),
+    generateFaviconPNG(blob, options, 16),
+  ]);
 
-  const inputs = [
-    {
-      png: png48,
-    },
-    {
-      png: png32,
-    },
-    {
-      png: png16,
-    },
-  ];
+  const inputs = pngs.map((png) => ({
+    png,
+  }));
 
   const converter = new PngIcoConverter();
 
