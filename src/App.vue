@@ -25,7 +25,7 @@ import { RouterView } from "vue-router";
 import { computed } from "vue";
 import TheHeader from "@/components/header/TheHeader.vue";
 import hljs from "highlight.js/lib/core";
-import html from "highlight.js/lib/languages/javascript";
+import html from "highlight.js/lib/languages/xml";
 
 const osThemeRef = useOsTheme();
 const theme = computed(() => (osThemeRef.value === "dark" ? darkTheme : null));
