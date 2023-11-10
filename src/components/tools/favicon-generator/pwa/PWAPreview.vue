@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <PWAPreviewWindowsTaskbar :image="image" :options="props.options" />
     <PWAPreviewAndroid :image="image" :options="props.options" />
   </div>
 </template>
@@ -9,6 +10,7 @@ import type { PWAOptions } from "@/utils/favicon-generator/pwa";
 import type { GeneralInfoOptions } from "@/utils/favicon-generator/general-info";
 import { computed } from "vue";
 import PWAPreviewAndroid from "./PWAPreviewAndroid.vue";
+import PWAPreviewWindowsTaskbar from "./PWAPreviewWindowsTaskbar.vue";
 
 const props = defineProps<{
   image: Blob | undefined;
