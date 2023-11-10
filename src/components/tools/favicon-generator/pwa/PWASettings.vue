@@ -1,6 +1,7 @@
 <template>
   <n-tabs type="line" animated>
     <n-tab-pane name="settings" tab="Settings" display-directive="show">
+      <PWASettingsDisplay v-model:options="options" />
       <PWAMaskableSettingsDisplay v-model:options="options" />
     </n-tab-pane>
   </n-tabs>
@@ -10,6 +11,7 @@
 import { NTabs, NTabPane } from "naive-ui";
 import type { PWAOptions } from "@/utils/favicon-generator/pwa";
 import { useVModel } from "@vueuse/core";
+import PWASettingsDisplay from "./PWASettingsDisplay.vue";
 import PWAMaskableSettingsDisplay from "./PWAMaskableSettingsDisplay.vue";
 
 const props = defineProps<{
