@@ -8,7 +8,9 @@
         :general-info-options="generalInfoOptions"
       />
     </n-grid-item>
-    <n-grid-item :span="3"> </n-grid-item>
+    <n-grid-item :span="3">
+      <PWASettings :image="image" v-model:options="options" />
+    </n-grid-item>
   </n-grid>
 </template>
 
@@ -18,6 +20,7 @@ import type { PWAOptions } from "@/utils/favicon-generator/pwa";
 import { useVModel } from "@vueuse/core";
 import type { GeneralInfoOptions } from "@/utils/favicon-generator/general-info";
 import PWAPreview from "./PWAPreview.vue";
+import PWASettings from "./PWASettings.vue";
 
 const props = defineProps<{
   image: Blob | undefined;
