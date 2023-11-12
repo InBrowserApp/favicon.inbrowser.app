@@ -58,8 +58,9 @@ const iconStyle = computed(() => ({
 
 .desktop-browser-image {
   position: absolute;
-  max-width: 100%;
-  max-height: 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
   will-change: padding;
   padding: var(--icon-margin);
   transition: padding 0.2s ease-in-out;
