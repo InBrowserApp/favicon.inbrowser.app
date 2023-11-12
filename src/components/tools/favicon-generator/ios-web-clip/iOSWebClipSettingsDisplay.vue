@@ -2,8 +2,8 @@
   <n-form-item label="Background Color">
     <n-color-picker
       :show-alpha="false"
+      :show-preview="true"
       v-model:value="options.backgroundColor"
-      :modes="['hex']"
     />
   </n-form-item>
   <n-form-item label="Margin">

@@ -38,8 +38,8 @@
       <n-form-item label="Theme Color">
         <n-color-picker
           :show-alpha="false"
+          :show-preview="true"
           v-model:value="options.theme_color"
-          :modes="['hex']"
         />
       </n-form-item>
     </n-grid-item>
@@ -67,8 +67,8 @@
         <span v-show="!options.theme_color_dark_enabled">Disabled</span>
         <n-color-picker
           :show-alpha="false"
+          :show-preview="true"
           v-model:value="options.theme_color_dark"
-          :modes="['hex']"
           :disabled="!options.theme_color_dark_enabled"
           v-show="options.theme_color_dark_enabled"
         />
@@ -78,8 +78,8 @@
       <n-form-item label="Background Color">
         <n-color-picker
           :show-alpha="false"
+          :show-preview="true"
           v-model:value="options.background_color"
-          :modes="['hex']"
         />
       </n-form-item>
     </n-grid-item>
