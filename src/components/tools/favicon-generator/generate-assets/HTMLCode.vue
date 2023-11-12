@@ -9,6 +9,7 @@ import type { PWAOptions } from "@/utils/favicon-generator/pwa";
 import type { GeneralInfoOptions } from "@/utils/favicon-generator/general-info";
 import type { DesktopBrowserOptions } from "@/utils/favicon-generator/desktop-browser";
 import { computed } from "vue";
+import { normalizePath } from "@/utils/favicon-generator/general-info";
 
 const props = defineProps<{
   image: Blob | undefined;
@@ -19,7 +20,7 @@ const props = defineProps<{
 }>();
 
 const prefix = computed(() => {
-  return "/";
+  return normalizePath(props.generalInfoOptions.path);
 });
 
 const code = computed(() => {
