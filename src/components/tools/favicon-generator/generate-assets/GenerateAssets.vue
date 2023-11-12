@@ -34,7 +34,15 @@
     <n-li>
       <n-tag :bordered="false" type="success" size="small">Optional</n-tag>
       Modify
-      <n-text code>site.webmanifest</n-text> to your needs.
+      <n-popover>
+        <template #trigger>
+          <n-text code>site.webmanifest</n-text>
+        </template>
+        <n-scrollbar style="max-height: 20em">
+          <SiteWebManifest :general-info-options="generalInfoOptions" />
+        </n-scrollbar>
+      </n-popover>
+      to your needs.
       <n-button
         text
         tag="a"
@@ -50,7 +58,18 @@
 </template>
 
 <script setup lang="ts">
-import { NH2, NButton, NIcon, NP, NText, NOl, NLi, NTag } from "naive-ui";
+import {
+  NH2,
+  NButton,
+  NIcon,
+  NP,
+  NText,
+  NOl,
+  NLi,
+  NTag,
+  NPopover,
+  NScrollbar
+} from "naive-ui";
 import type { iOSWebClipOptions } from "@/utils/favicon-generator/ios-web-clip";
 import type { PWAOptions } from "@/utils/favicon-generator/pwa";
 import type { GeneralInfoOptions } from "@/utils/favicon-generator/general-info";
@@ -64,6 +83,7 @@ import {
 import HTMLCode from "./HTMLCode.vue";
 import { normalizePath } from "@/utils/favicon-generator/general-info";
 import { computed } from "vue";
+import SiteWebManifest from "./SiteWebManifest.vue";
 
 const props = defineProps<{
   image: Blob | undefined;

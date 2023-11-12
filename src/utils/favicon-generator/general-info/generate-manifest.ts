@@ -1,9 +1,7 @@
 import type { GeneralInfoOptions } from "./types";
 import { normalizePath } from "./normalize-path";
 
-export async function generateManifest(
-  options: GeneralInfoOptions
-): Promise<Blob> {
+export function generateManifestText(options: GeneralInfoOptions): string {
   const manifest = {
     name: options.name,
     short_name: options.short_name,
@@ -41,6 +39,13 @@ export async function generateManifest(
   };
 
   const json = JSON.stringify(manifest, null, 2);
+  return json;
+}
+
+export async function generateManifest(
+  options: GeneralInfoOptions
+): Promise<Blob> {
+  const json = generateManifestText(options);
   const blob = new Blob([json], { type: "application/json" });
   return blob;
 }
