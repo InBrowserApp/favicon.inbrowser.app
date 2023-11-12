@@ -32,7 +32,7 @@ const code = computed(() => {
 
   // iOS Web Clip
   lines.push(
-    `<link rel="apple-touch-icon" sizes="180x180" href="${prefix.value}apple-touch-icon.png">`
+    `<link rel="apple-touch-icon" href="${prefix.value}apple-touch-icon.png">`
   );
 
   // Desktop
