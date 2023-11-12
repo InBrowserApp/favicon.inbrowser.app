@@ -2,10 +2,9 @@ import type { GeneralInfoOptions } from "./types";
 import { normalizePath } from "./normalize-path";
 
 export function generateManifestText(options: GeneralInfoOptions): string {
-  const manifest = {
+  const manifest: any = {
     name: options.name,
     short_name: options.short_name,
-    description: options.description,
     icons: [
       {
         src: normalizePath(options.path) + "pwa-192x192.png",
@@ -37,6 +36,10 @@ export function generateManifestText(options: GeneralInfoOptions): string {
     background_color: options.background_color,
     theme_color: options.theme_color,
   };
+
+  if (options.description !== "") {
+    manifest["description"] = options.description;
+  }
 
   const json = JSON.stringify(manifest, null, 2);
   return json;
