@@ -89,6 +89,8 @@ const iconStyle = computed(() => ({
   position: absolute;
   width: 100%;
   height: 100%;
+  object-fit: contain;
+
   box-sizing: border-box;
   will-change: padding;
   padding: var(--icon-margin);
