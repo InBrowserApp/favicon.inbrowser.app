@@ -3,6 +3,13 @@
     <n-tab-pane name="settings" tab="Settings" display-directive="show">
       <PWAMaskableSettingsDisplay v-model:options="options" />
     </n-tab-pane>
+    <n-tab-pane
+      name="dedicated-image"
+      tab="Dedicated Image"
+      display-directive="show"
+    >
+      <PWAMaskableSettingsDedicatedImage v-model:options="options" />
+    </n-tab-pane>
   </n-tabs>
 </template>
 
@@ -11,6 +18,7 @@ import { NTabs, NTabPane } from "naive-ui";
 import type { PWAOptions } from "@/utils/favicon-generator/pwa";
 import { useVModel } from "@vueuse/core";
 import PWAMaskableSettingsDisplay from "./PWAMaskableSettingsDisplay.vue";
+import PWAMaskableSettingsDedicatedImage from "./PWAMaskableSettingsDedicatedImage.vue";
 
 const props = defineProps<{
   image: Blob | undefined;
