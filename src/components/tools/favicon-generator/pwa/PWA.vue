@@ -1,5 +1,8 @@
 <template>
-  <n-h2 prefix="bar" align-text>Progressive Web App (PWA)</n-h2>
+  <n-h2 prefix="bar" align-text>
+    <n-icon :component="LogoPwa" style="vertical-align: -0.15em" />
+    Progressive Web App (PWA)
+  </n-h2>
   <n-h3 prefix="bar" align-text>
     PWA <n-text code>"purpose": "any"</n-text>
   </n-h3>
@@ -33,7 +36,7 @@
 </template>
 
 <script setup lang="ts">
-import { NH2, NH3, NText, NGrid, NGridItem } from "naive-ui";
+import { NH2, NH3, NText, NGrid, NGridItem, NIcon } from "naive-ui";
 import type { PWAOptions } from "@/utils/favicon-generator/pwa";
 import { useVModel } from "@vueuse/core";
 import type { GeneralInfoOptions } from "@/utils/favicon-generator/general-info";
@@ -41,6 +44,7 @@ import PWAPreview from "./any/PWAPreview.vue";
 import PWAMaskablePreview from "./maskable/PWAMaskablePreview.vue";
 import PWASettings from "./any/PWASettings.vue";
 import PWAMaskableSettings from "./maskable/PWAMaskableSettings.vue";
+import { LogoPwa } from "@vicons/ionicons5";
 
 const props = defineProps<{
   image: Blob | undefined;

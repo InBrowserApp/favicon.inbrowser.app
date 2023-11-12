@@ -1,5 +1,8 @@
 <template>
-  <n-h2 prefix="bar" align-text>Desktop Browser & Google Result</n-h2>
+  <n-h2 prefix="bar" align-text>
+    <n-icon :component="Desktop16Regular" style="vertical-align: -0.15em" />
+    Desktop Browser & Google Result
+  </n-h2>
   <n-grid x-gap="12" :cols="5">
     <n-grid-item :span="2">
       <DesktopBrowserPreview
@@ -15,12 +18,13 @@
 </template>
 
 <script setup lang="ts">
-import { NH2, NGrid, NGridItem } from "naive-ui";
+import { NH2, NGrid, NGridItem, NIcon } from "naive-ui";
 import type { DesktopBrowserOptions } from "@/utils/favicon-generator/desktop-browser";
 import { useVModel } from "@vueuse/core";
 import DesktopBrowserPreview from "./DesktopBrowserPreview.vue";
 import type { GeneralInfoOptions } from "@/utils/favicon-generator/general-info";
 import DesktopBrowserSettings from "./DesktopBrowserSettings.vue";
+import { Desktop16Regular } from "@vicons/fluent";
 
 const props = defineProps<{
   image: Blob | undefined;

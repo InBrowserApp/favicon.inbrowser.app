@@ -1,5 +1,8 @@
 <template>
-  <n-h2 prefix="bar" align-text>General Info</n-h2>
+  <n-h2 prefix="bar" align-text>
+    <n-icon :component="Info16Regular" style="vertical-align: -0.15em" />
+    General Info
+  </n-h2>
   <n-grid x-gap="12" :cols="4">
     <n-grid-item :span="2">
       <n-form-item label="App Name">
@@ -63,9 +66,11 @@ import {
   NGridItem,
   NColorPicker,
   NSelect,
+  NIcon,
 } from "naive-ui";
 import type { GeneralInfoOptions } from "@/utils/favicon-generator/general-info";
 import { useVModel } from "@vueuse/core";
+import { Info16Regular } from "@vicons/fluent";
 
 const props = defineProps<{
   options: GeneralInfoOptions;

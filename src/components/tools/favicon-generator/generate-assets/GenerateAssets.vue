@@ -1,5 +1,8 @@
 <template>
-  <n-h2 prefix="bar" align-text>Generate Favicon Assets</n-h2>
+  <n-h2 prefix="bar" align-text>
+    <n-icon :component="Archive20Regular" style="vertical-align: -0.15em" />
+    Generate Favicon Assets
+  </n-h2>
   <n-p>
     <n-text depth="3">
       <n-icon :component="Sparkle16Filled" style="vertical-align: -0.1em" />
@@ -68,7 +71,7 @@ import {
   NLi,
   NTag,
   NPopover,
-  NScrollbar
+  NScrollbar,
 } from "naive-ui";
 import type { iOSWebClipOptions } from "@/utils/favicon-generator/ios-web-clip";
 import type { PWAOptions } from "@/utils/favicon-generator/pwa";
@@ -79,6 +82,7 @@ import {
   ArrowDownload16Filled,
   Sparkle16Filled,
   BookInformation20Regular,
+  Archive20Regular,
 } from "@vicons/fluent";
 import HTMLCode from "./HTMLCode.vue";
 import { normalizePath } from "@/utils/favicon-generator/general-info";
