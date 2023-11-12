@@ -26,10 +26,12 @@ import { computed } from "vue";
 import TheHeader from "@/components/header/TheHeader.vue";
 import hljs from "highlight.js/lib/core";
 import html from "highlight.js/lib/languages/xml";
+import json from "highlight.js/lib/languages/json";
 
 const osThemeRef = useOsTheme();
 const theme = computed(() => (osThemeRef.value === "dark" ? darkTheme : null));
 hljs.registerLanguage("html", html);
+hljs.registerLanguage("json", json);
 </script>
 
 <style>
