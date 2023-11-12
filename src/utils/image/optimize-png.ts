@@ -1,19 +1,17 @@
-// import { optimise } from "@/utils/packages/oxipng";
+import OptimizeWorker from "./optimize-png.worker?worker";
+import WASM_MODULE_URL from "@jsquash/oxipng/codec/pkg/squoosh_oxipng_bg.wasm?url";
 
 export async function optimizePNG(blob: Blob) {
-  // if (blob.type !== "image/png") {
-  //   throw new Error("Blob is not a PNG");
-  // }
+  const worker = new OptimizeWorker();
+  const optimizedBlob = await new Promise<Blob>((resolve, reject) => {
+    worker.onmessage = (event) => {
+      resolve(event.data);
+    };
+    worker.onerror = (event) => {
+      reject(event.error);
+    };
+    worker.postMessage([WASM_MODULE_URL, blob]);
+  });
 
-  // const arraybuffer = await blob.arrayBuffer();
-  // const optimisedArrayBuffer = await optimise(arraybuffer);
-  // const optimisedBlob = new Blob([optimisedArrayBuffer], {
-  //   type: blob.type,
-  // });
-
-  // return optimisedBlob;
-
-  // FIXME: vite build fails with the above code, so we'll just return the original blob for now
-  // https://github.com/vitejs/vite/issues/13367
-  return blob;
+  return optimizedBlob;
 }
