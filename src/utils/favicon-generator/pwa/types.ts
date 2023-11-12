@@ -7,4 +7,5 @@ export interface PWAOptions {
   maskableMargin: number;
   margin: number;
   image?: Blob;
+  maskableImage?: Blob;
 }
