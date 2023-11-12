@@ -1,15 +1,25 @@
 <template>
   <n-h2 prefix="bar" align-text>Generate Favicon Assets</n-h2>
-  <n-button @click="download">Download</n-button>
+  <n-p>
+    <n-text depth="3">
+      <n-icon :component="Sparkle16Filled" style="vertical-align: -0.1em" />
+      All files are losslessly minified using oxipng and svgo.
+    </n-text>
+  </n-p>
+  <n-button size="small" text @click="download">
+    <n-icon :component="ArrowDownload16Filled" />
+    Download favicon-assets.zip
+  </n-button>
 </template>
 
 <script setup lang="ts">
-import { NH2, NButton } from "naive-ui";
+import { NH2, NButton, NIcon, NP, NText } from "naive-ui";
 import type { iOSWebClipOptions } from "@/utils/favicon-generator/ios-web-clip";
 import type { PWAOptions } from "@/utils/favicon-generator/pwa";
 import type { GeneralInfoOptions } from "@/utils/favicon-generator/general-info";
 import type { DesktopBrowserOptions } from "@/utils/favicon-generator/desktop-browser";
 import { generateAssets } from "@/utils/favicon-generator/generate-assets";
+import { ArrowDownload16Filled, Sparkle16Filled } from "@vicons/fluent";
 
 const props = defineProps<{
   image: Blob | undefined;
