@@ -7,7 +7,6 @@
 <script setup lang="ts">
 import type { PWAOptions } from "@/utils/favicon-generator/pwa";
 import type { GeneralInfoOptions } from "@/utils/favicon-generator/general-info";
-import { computed } from "vue";
 import PWAPreviewAndroid from "./PWAPreviewAndroid.vue";
 
 const props = defineProps<{
@@ -15,12 +14,4 @@ const props = defineProps<{
   options: PWAOptions;
   generalInfoOptions: GeneralInfoOptions;
 }>();
-
-const image = computed<Blob | undefined>(() => {
-  if (props.options.image) {
-    return props.options.image;
-  } else {
-    return props.image;
-  }
-});
 </script>

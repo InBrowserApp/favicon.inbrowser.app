@@ -34,8 +34,8 @@ const props = defineProps<{
 }>();
 
 const image = computed<Blob | undefined>(() => {
-  if (props.options.image) {
-    return props.options.image;
+  if (props.options.maskableImage) {
+    return props.options.maskableImage;
   } else {
     return props.image;
   }
