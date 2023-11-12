@@ -3,9 +3,14 @@ import { getImageSize } from "@/utils/image/get-image-size";
 import { optimizePNG } from "@/utils/image/optimize-png";
 
 export async function generateOutput(
-  blob: Blob,
+  image: Blob | undefined,
   options: iOSWebClipOptions
 ): Promise<Blob> {
+  const blob = image ?? options?.image;
+  if (blob === undefined) {
+    throw new Error("image is undefined");
+  }
+
   const { height, width } = await getImageSize(blob);
   console.log("height", height);
   console.log("width", width);
