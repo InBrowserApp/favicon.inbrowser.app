@@ -1,13 +1,13 @@
 <template>
   <main>
     <BackToHome />
-    <n-h2 prefix="bar" align-text>Favicon Generator</n-h2>
+    <n-h1 prefix="bar" align-text>Favicon Generator</n-h1>
     <FaviconGenerator />
   </main>
 </template>
 
 <script setup lang="ts">
-import { NH2 } from "naive-ui";
+import { NH1 } from "naive-ui";
 import { useHead } from "@vueuse/head";
 import BackToHome from "@/components/misc/BackToHome.vue";
 import FaviconGenerator from "@/components/tools/favicon-generator/FaviconGenerator.vue";
