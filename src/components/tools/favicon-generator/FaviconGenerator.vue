@@ -58,7 +58,7 @@ const pwaOptions = ref<PWAOptions>({
   backgroundRadius: 0,
   maskable: true,
   maskableBackgroundColor: "#FFFFFF",
-  maskableMargin: 0,
+  maskableMargin: 40,
   margin: 0,
 });
 
