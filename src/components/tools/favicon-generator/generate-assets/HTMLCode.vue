@@ -63,9 +63,16 @@ const code = computed(() => {
   lines.push(`<link rel="manifest" href="${prefix.value}site.webmanifest">`);
 
   // Theme color
-  if (props.generalInfoOptions.theme_color) {
+  if (props.generalInfoOptions.theme_color_dark_enabled) {
     lines.push(
-      `<meta name="theme-color" content="${props.generalInfoOptions.theme_color}">`
+      `<meta name="theme-color" content="${props.generalInfoOptions.theme_color}" media="(prefers-color-scheme: light)">`
+    );
+    lines.push(
+      `<meta name="theme-color" content="${props.generalInfoOptions.theme_color_dark}" media="(prefers-color-scheme: dark)">`
+    );
+  } else {
+    lines.push(
+      `<meta name="theme-color" content="${props.generalInfoOptions.theme_color}"">`
     );
   }
 

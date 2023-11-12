@@ -44,6 +44,37 @@
       </n-form-item>
     </n-grid-item>
     <n-grid-item :span="2">
+      <n-form-item>
+        <template #label>
+          Theme Color in Dark Mode
+          <n-button
+            tag="a"
+            href="https://css-tricks.com/meta-theme-color-and-trickery/"
+            target="_blank"
+            text
+            style="vertical-align: -0.2em"
+          >
+            <template #icon>
+              <n-icon :component="Info16Regular" />
+            </template>
+          </n-button>
+        </template>
+
+        <n-checkbox
+          v-model:checked="options.theme_color_dark_enabled"
+          style="margin-right: 0.7em"
+        />
+        <span v-show="!options.theme_color_dark_enabled">Disabled</span>
+        <n-color-picker
+          :show-alpha="false"
+          v-model:value="options.theme_color_dark"
+          :modes="['hex']"
+          :disabled="!options.theme_color_dark_enabled"
+          v-show="options.theme_color_dark_enabled"
+        />
+      </n-form-item>
+    </n-grid-item>
+    <n-grid-item :span="2">
       <n-form-item label="Background Color">
         <n-color-picker
           :show-alpha="false"
@@ -84,6 +115,7 @@ import {
   NIcon,
   NButton,
   NP,
+  NCheckbox,
 } from "naive-ui";
 import type { GeneralInfoOptions } from "@/utils/favicon-generator/general-info";
 import { useVModel } from "@vueuse/core";

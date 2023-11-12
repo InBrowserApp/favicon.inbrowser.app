@@ -77,6 +77,8 @@ const generalInfoOptions = ref<GeneralInfoOptions>({
   start_url: "/",
   display: "standalone",
   theme_color: "#FFFFFF",
+  theme_color_dark_enabled: true,
+  theme_color_dark: "#000000",
   background_color: "#FFFFFF",
   path: "/",
 });
