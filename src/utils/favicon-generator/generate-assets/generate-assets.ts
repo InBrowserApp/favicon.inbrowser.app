@@ -4,6 +4,7 @@ import type { PWAOptions } from "../pwa";
 import type { iOSWebClipOptions } from "../ios-web-clip";
 import { BlobReader, BlobWriter, ZipWriter } from "@zip.js/zip.js";
 import { generateAssets as generateiOSAssets } from "../ios-web-clip";
+import { generateAssets as generatePWAAssets } from "../pwa";
 
 export interface GenerateAssetsOptions {
   generalInfo: GeneralInfoOptions;
@@ -25,6 +26,7 @@ export async function generateAssets(
 
   const assetsList = await Promise.all([
     generateiOSAssets(image, options.iosWebClip),
+    generatePWAAssets(image, options.pwa),
   ]);
 
   for (const asset of assetsList) {
