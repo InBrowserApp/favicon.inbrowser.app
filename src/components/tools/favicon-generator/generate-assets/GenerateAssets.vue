@@ -10,6 +10,16 @@
     <n-icon :component="ArrowDownload16Filled" />
     Download favicon-assets.zip
   </n-button>
+
+  <n-p>
+    <HTMLCode
+      :image="image"
+      :ios-web-clip-options="iosWebClipOptions"
+      :desktop-browser-options="desktopBrowserOptions"
+      :pwa-options="pwaOptions"
+      :general-info-options="generalInfoOptions"
+    />
+  </n-p>
 </template>
 
 <script setup lang="ts">
@@ -20,6 +30,7 @@ import type { GeneralInfoOptions } from "@/utils/favicon-generator/general-info"
 import type { DesktopBrowserOptions } from "@/utils/favicon-generator/desktop-browser";
 import { generateAssets } from "@/utils/favicon-generator/generate-assets";
 import { ArrowDownload16Filled, Sparkle16Filled } from "@vicons/fluent";
+import HTMLCode from "./HTMLCode.vue";
 
 const props = defineProps<{
   image: Blob | undefined;
