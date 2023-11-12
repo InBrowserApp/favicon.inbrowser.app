@@ -8,7 +8,9 @@
     <n-image :src="imageURL" class="dedicated-image" />
     <div>
       <n-button size="small" text @click="options.maskableImage = undefined">
-        <n-icon :component="Delete16Regular" />
+        <template #icon>
+          <n-icon :component="Delete16Regular" />
+        </template>
         Remove
       </n-button>
     </div>

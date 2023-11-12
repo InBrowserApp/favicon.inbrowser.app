@@ -13,7 +13,9 @@
   <n-ol>
     <n-li>
       <n-button text @click="download" style="vertical-align: -0.15em">
-        <n-icon :component="ArrowDownload16Filled" />
+        <template #icon>
+          <n-icon :component="ArrowDownload16Filled" />
+        </template>
         Download favicon-assets.zip
       </n-button>
     </n-li>
@@ -53,7 +55,9 @@
         target="_blank"
         style="vertical-align: -0.15em"
       >
-        <n-icon :component="BookInformation20Regular" />
+        <template #icon>
+          <n-icon :component="BookInformation20Regular" />
+        </template>
         Web app manifests reference
       </n-button>
     </n-li>

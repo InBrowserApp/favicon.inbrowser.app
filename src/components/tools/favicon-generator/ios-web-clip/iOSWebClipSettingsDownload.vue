@@ -6,7 +6,10 @@
     </n-text>
   </n-p>
   <n-button size="small" text @click="download">
-    <n-icon :component="ArrowDownload16Filled" />
+    <template #icon>
+      <n-icon :component="ArrowDownload16Filled" />
+    </template>
+
     Download apple-touch-icon.png
   </n-button>
 

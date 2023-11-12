@@ -6,12 +6,16 @@
     </n-text>
   </n-p>
   <n-button size="small" text @click="download192png">
-    <n-icon :component="ArrowDownload16Filled" />
+    <template #icon>
+      <n-icon :component="ArrowDownload16Filled" />
+    </template>
     Download pwa-192x192.png
   </n-button>
   <br />
   <n-button size="small" text @click="download512png">
-    <n-icon :component="ArrowDownload16Filled" />
+    <template #icon>
+      <n-icon :component="ArrowDownload16Filled" />
+    </template>
     Download pwa-512x512.png
   </n-button>
 

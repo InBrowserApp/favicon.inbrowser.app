@@ -6,25 +6,33 @@
     </n-text>
   </n-p>
   <n-button size="small" text @click="downloadico">
-    <n-icon :component="ArrowDownload16Filled" />
+    <template #icon>
+      <n-icon :component="ArrowDownload16Filled" />
+    </template>
     Download favicon.ico
   </n-button>
   <template v-if="useOriginalSVG">
     <br />
     <n-button size="small" text @click="downloadSVG">
-      <n-icon :component="ArrowDownload16Filled" />
+      <template #icon>
+        <n-icon :component="ArrowDownload16Filled" />
+      </template>
       Download favicon.svg
     </n-button>
   </template>
   <template v-else>
     <br />
     <n-button size="small" text @click="download32png">
-      <n-icon :component="ArrowDownload16Filled" />
+      <template #icon>
+        <n-icon :component="ArrowDownload16Filled" />
+      </template>
       Download favicon-32x32.png
     </n-button>
     <br />
     <n-button size="small" text @click="download16png">
-      <n-icon :component="ArrowDownload16Filled" />
+      <template #icon>
+        <n-icon :component="ArrowDownload16Filled" />
+      </template>
       Download favicon-16x16.png
     </n-button>
   </template>
