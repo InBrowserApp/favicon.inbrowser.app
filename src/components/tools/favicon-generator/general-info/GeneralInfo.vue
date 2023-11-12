@@ -3,6 +3,21 @@
     <n-icon :component="Info16Regular" style="vertical-align: -0.15em" />
     General Info
   </n-h2>
+  <n-p>
+    <n-button
+      text
+      tag="a"
+      href="https://developer.mozilla.org/en-US/docs/Web/Manifest"
+      target="_blank"
+      style="vertical-align: -0.15em"
+    >
+      <template #icon>
+        <n-icon :component="BookInformation20Regular" />
+      </template>
+
+      Check out Web app manifests reference for more information.
+    </n-button>
+  </n-p>
   <n-grid x-gap="12" :cols="4">
     <n-grid-item :span="2">
       <n-form-item label="App Name">
@@ -67,10 +82,12 @@ import {
   NColorPicker,
   NSelect,
   NIcon,
+  NButton,
+  NP,
 } from "naive-ui";
 import type { GeneralInfoOptions } from "@/utils/favicon-generator/general-info";
 import { useVModel } from "@vueuse/core";
-import { Info16Regular } from "@vicons/fluent";
+import { Info16Regular, BookInformation20Regular } from "@vicons/fluent";
 
 const props = defineProps<{
   options: GeneralInfoOptions;
