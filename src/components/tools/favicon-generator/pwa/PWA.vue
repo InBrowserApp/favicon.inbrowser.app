@@ -1,5 +1,5 @@
 <template>
-  <n-h2 prefix="bar" align-text>PWA</n-h2>
+  <n-h2 prefix="bar" align-text>Progressive Web App (PWA)</n-h2>
   <n-h3 prefix="bar" align-text>
     PWA <n-text code>"purpose": "any"</n-text>
   </n-h3>
