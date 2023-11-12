@@ -10,6 +10,13 @@
     >
       <PWAMaskableSettingsDedicatedImage v-model:options="options" />
     </n-tab-pane>
+    <n-tab-pane
+      name="download"
+      tab="Download Separately"
+      display-directive="show"
+    >
+      <PWAMaskableSettingsDownload :options="options" :image="image" />
+    </n-tab-pane>
   </n-tabs>
 </template>
 
@@ -19,6 +26,7 @@ import type { PWAOptions } from "@/utils/favicon-generator/pwa";
 import { useVModel } from "@vueuse/core";
 import PWAMaskableSettingsDisplay from "./PWAMaskableSettingsDisplay.vue";
 import PWAMaskableSettingsDedicatedImage from "./PWAMaskableSettingsDedicatedImage.vue";
+import PWAMaskableSettingsDownload from "./PWAMaskableSettingsDownload.vue";
 
 const props = defineProps<{
   image: Blob | undefined;
