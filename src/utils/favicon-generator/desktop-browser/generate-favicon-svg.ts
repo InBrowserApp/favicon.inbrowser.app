@@ -1,9 +1,11 @@
 import type { DesktopBrowserOptions } from "./types";
-import { optimize } from "svgo";
+
 export async function generateFaviconSVG(
   blob: Blob,
   options: DesktopBrowserOptions
 ): Promise<Blob> {
+  const svgo = import("svgo");
+
   const image = options?.image ?? blob;
   if (image === undefined) {
     throw new Error("image is undefined");
@@ -15,6 +17,7 @@ export async function generateFaviconSVG(
 
   const svgString = await image.text();
 
+  const optimize = (await svgo).optimize;
   const result = optimize(svgString, {});
 
   const newBlob = new Blob([result.data], {
