@@ -62,6 +62,13 @@ const code = computed(() => {
   // PWA
   lines.push(`<link rel="manifest" href="${prefix.value}site.webmanifest">`);
 
+  // Theme color
+  if (props.generalInfoOptions.theme_color) {
+    lines.push(
+      `<meta name="theme-color" content="${props.generalInfoOptions.theme_color}">`
+    );
+  }
+
   return lines.join("\n");
 });
 </script>
