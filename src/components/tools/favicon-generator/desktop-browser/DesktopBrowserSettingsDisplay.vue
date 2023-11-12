@@ -1,26 +1,34 @@
 <template>
-  <n-checkbox v-model:checked="options.original">
-    Use the original image as is
-  </n-checkbox>
-  <n-collapse-transition :show="!options.original">
-    <n-checkbox v-model:checked="options.background">
-      Set a background color
+  <n-p>
+    <n-checkbox v-model:checked="options.original">
+      Use the original image as is
     </n-checkbox>
+  </n-p>
+
+  <n-collapse-transition :show="!options.original">
+    <n-p>
+      <n-checkbox v-model:checked="options.background">
+        Set a background color
+      </n-checkbox>
+    </n-p>
+
     <n-collapse-transition :show="options.background">
-      <div style="margin-bottom: 0.25em; margin-top: 0.5em">
-        Background Color
-      </div>
-      <n-color-picker
-        :show-alpha="false"
-        v-model:value="options.backgroundColor"
-        :modes="['hex']"
-      />
-      <div style="margin-bottom: 0.25em">Background Radius</div>
-      <n-slider v-model:value="options.backgroundRadius" :step="1" />
+      <n-form-item label="Background Color">
+        <n-color-picker
+          :show-alpha="false"
+          v-model:value="options.backgroundColor"
+          :modes="['hex']"
+        />
+      </n-form-item>
+
+      <n-form-item label="Background Radius">
+        <n-slider v-model:value="options.backgroundRadius" :step="1" />
+      </n-form-item>
     </n-collapse-transition>
 
-    <div style="margin-bottom: 0.25em">Margin</div>
-    <n-slider v-model:value="options.margin" :step="1" />
+    <n-form-item label="Margin">
+      <n-slider v-model:value="options.margin" :step="1" />
+    </n-form-item>
   </n-collapse-transition>
 </template>
 
@@ -30,6 +38,8 @@ import {
   NSlider,
   NCheckbox,
   NCollapseTransition,
+  NP,
+  NFormItem,
 } from "naive-ui";
 import type { DesktopBrowserOptions } from "@/utils/favicon-generator/desktop-browser";
 import { useVModel } from "@vueuse/core";

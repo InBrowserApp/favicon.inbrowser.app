@@ -1,16 +1,18 @@
 <template>
-  <div style="margin-bottom: 0.25em">Background Color</div>
-  <n-color-picker
-    :show-alpha="false"
-    v-model:value="options.backgroundColor"
-    :modes="['hex']"
-  />
-  <div style="margin-bottom: 0.25em">Margin</div>
-  <n-slider v-model:value="options.margin" :step="1" />
+  <n-form-item label="Background Color">
+    <n-color-picker
+      :show-alpha="false"
+      v-model:value="options.backgroundColor"
+      :modes="['hex']"
+    />
+  </n-form-item>
+  <n-form-item label="Margin">
+    <n-slider v-model:value="options.margin" :step="1" />
+  </n-form-item>
 </template>
 
 <script setup lang="ts">
-import { NColorPicker, NSlider } from "naive-ui";
+import { NColorPicker, NSlider, NFormItem } from "naive-ui";
 import type { iOSWebClipOptions } from "@/utils/favicon-generator/ios-web-clip";
 import { useVModel } from "@vueuse/core";
 
