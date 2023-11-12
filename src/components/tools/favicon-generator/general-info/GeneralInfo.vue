@@ -18,7 +18,7 @@
       Check out Web app manifests reference for more information.
     </n-button>
   </n-p>
-  <n-grid x-gap="12" :cols="4">
+  <n-grid x-gap="30" :cols="4">
     <n-grid-item :span="2">
       <n-form-item label="App Name">
         <n-input v-model:value="options.name" />

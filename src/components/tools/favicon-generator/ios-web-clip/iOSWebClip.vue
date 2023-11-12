@@ -3,7 +3,7 @@
     <n-icon :component="Apple" style="vertical-align: -0.15em" />
     iOS Web Clip
   </n-h2>
-  <n-grid x-gap="12" :cols="5">
+  <n-grid x-gap="30" :cols="5">
     <n-grid-item :span="2">
       <iOSWebClipPreview
         :image="image"

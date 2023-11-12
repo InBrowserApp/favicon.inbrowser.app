@@ -21,7 +21,7 @@
   <n-h3 prefix="bar" align-text>
     PWA <n-text code>"purpose": "any"</n-text>
   </n-h3>
-  <n-grid x-gap="12" :cols="5">
+  <n-grid x-gap="30" :cols="5">
     <n-grid-item :span="2">
       <PWAPreview
         :image="image"
@@ -36,7 +36,7 @@
   <n-h3 prefix="bar" align-text>
     PWA <n-text code>"purpose": "maskable"</n-text>
   </n-h3>
-  <n-grid x-gap="12" :cols="5">
+  <n-grid x-gap="30" :cols="5">
     <n-grid-item :span="2">
       <PWAMaskablePreview
         :image="image"
