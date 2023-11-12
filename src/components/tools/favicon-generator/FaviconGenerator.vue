@@ -16,6 +16,13 @@
     v-model:options="pwaOptions"
     :general-info-options="generalInfoOptions"
   />
+  <GenerateAssets
+    :image="image"
+    :ios-web-clip-options="iosOptions"
+    :desktop-browser-options="desktopOptions"
+    :pwa-options="pwaOptions"
+    :general-info-options="generalInfoOptions"
+  />
 </template>
 
 <script setup lang="ts">
@@ -29,6 +36,7 @@ import DesktopBrowser from "./desktop-browser/DesktopBrowser.vue";
 import type { DesktopBrowserOptions } from "@/utils/favicon-generator/desktop-browser";
 import PWA from "./pwa/PWA.vue";
 import type { PWAOptions } from "@/utils/favicon-generator/pwa";
+import GenerateAssets from "./generate-assets/GenerateAssets.vue";
 
 const image = ref<Blob | undefined>(undefined);
 // FIXME: temp image
