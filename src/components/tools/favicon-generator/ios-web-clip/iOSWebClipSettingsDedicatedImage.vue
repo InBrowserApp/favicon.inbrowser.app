@@ -1,10 +1,10 @@
 <template>
   <div v-if="options.image === undefined">
-    <div>You are not using a dedicated image.</div>
+    <n-p>You are not using a dedicated image.</n-p>
     <ImageUpload @update:file="options.image = $event" />
   </div>
   <div v-else>
-    <div>You are using a dedicated image.</div>
+    <n-p>You are using a dedicated image.</n-p>
     <n-image :src="imageURL" class="dedicated-image" />
     <div>
       <n-button size="small" text @click="options.image = undefined">
@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-import { NButton, NIcon, NImage } from "naive-ui";
+import { NButton, NIcon, NImage, NP } from "naive-ui";
 import type { iOSWebClipOptions } from "@/utils/favicon-generator/ios-web-clip";
 import { useVModel, useObjectUrl } from "@vueuse/core";
 import ImageUpload from "../ImageUpload.vue";
