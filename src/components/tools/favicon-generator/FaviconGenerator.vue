@@ -73,5 +73,11 @@ const pwaOptions = ref<PWAOptions>({
 const generalInfoOptions = ref<GeneralInfoOptions>({
   name: "App",
   short_name: "App",
+  description: "",
+  start_url: "/",
+  display: "standalone",
+  theme_color: "#FFFFFF",
+  background_color: "#FFFFFF",
+  path: "/",
 });
 </script>

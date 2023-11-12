@@ -6,6 +6,7 @@ import { BlobReader, BlobWriter, ZipWriter } from "@zip.js/zip.js";
 import { generateAssets as generateiOSAssets } from "../ios-web-clip";
 import { generateAssets as generatePWAAssets } from "../pwa";
 import { generateAssets as generateDesktopBrowserAssets } from "../desktop-browser";
+import { generateAssets as generateGeneralAssets } from "../general-info";
 
 export interface GenerateAssetsOptions {
   generalInfo: GeneralInfoOptions;
@@ -29,6 +30,7 @@ export async function generateAssets(
     generateiOSAssets(image, options.iosWebClip),
     generatePWAAssets(image, options.pwa),
     generateDesktopBrowserAssets(image, options.desktopBrowser),
+    generateGeneralAssets(options.generalInfo),
   ]);
 
   for (const asset of assetsList) {
