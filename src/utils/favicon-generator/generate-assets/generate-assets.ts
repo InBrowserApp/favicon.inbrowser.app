@@ -5,6 +5,7 @@ import type { iOSWebClipOptions } from "../ios-web-clip";
 import { BlobReader, BlobWriter, ZipWriter } from "@zip.js/zip.js";
 import { generateAssets as generateiOSAssets } from "../ios-web-clip";
 import { generateAssets as generatePWAAssets } from "../pwa";
+import { generateAssets as generateDesktopBrowserAssets } from "../desktop-browser";
 
 export interface GenerateAssetsOptions {
   generalInfo: GeneralInfoOptions;
@@ -27,6 +28,7 @@ export async function generateAssets(
   const assetsList = await Promise.all([
     generateiOSAssets(image, options.iosWebClip),
     generatePWAAssets(image, options.pwa),
+    generateDesktopBrowserAssets(image, options.desktopBrowser),
   ]);
 
   for (const asset of assetsList) {
