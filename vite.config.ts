@@ -15,7 +15,7 @@ export default defineConfig({
       includeAssets: ["favicon.ico", "favicon.svg", "apple-touch-icon.png"],
       registerType: "autoUpdate",
       workbox: {
-        globPatterns: ["assets/*", "**/*.{js,css,html}"],
+        globPatterns: ["**/*.{js,css,html,wasm,webp}"],
         maximumFileSizeToCacheInBytes: 10000000,
       },
       manifest: {
