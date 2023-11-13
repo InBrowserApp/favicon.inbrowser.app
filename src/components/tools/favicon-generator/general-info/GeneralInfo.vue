@@ -11,7 +11,7 @@
     >
       <n-icon
         :component="BookInformation20Regular"
-        style="vertical-align: -0.15em;"
+        style="vertical-align: -0.15em"
         size="1.2em"
       />
 

@@ -14,7 +14,7 @@ const router = createRouter({
       path: "/tools/favicon-generator",
       name: "favicon-generator",
       component: FaviconGeneratorView,
-    }
+    },
   ],
 });
 

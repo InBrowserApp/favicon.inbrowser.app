@@ -11,7 +11,7 @@
     >
       <n-icon
         :component="BookInformation20Regular"
-        style="vertical-align: -0.15em;"
+        style="vertical-align: -0.15em"
         size="1.2em"
       />
 
@@ -52,16 +52,7 @@
 </template>
 
 <script setup lang="ts">
-import {
-  NH2,
-  NH3,
-  NText,
-  NGrid,
-  NGridItem,
-  NIcon,
-  NP,
-  NButton,
-} from "naive-ui";
+import { NH2, NH3, NText, NGrid, NGridItem, NIcon, NP } from "naive-ui";
 import type { PWAOptions } from "@/utils/favicon-generator/pwa";
 import { useVModel } from "@vueuse/core";
 import type { GeneralInfoOptions } from "@/utils/favicon-generator/general-info";
