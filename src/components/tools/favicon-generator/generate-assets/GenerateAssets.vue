@@ -82,7 +82,6 @@ import type { iOSWebClipOptions } from "@/utils/favicon-generator/ios-web-clip";
 import type { PWAOptions } from "@/utils/favicon-generator/pwa";
 import type { GeneralInfoOptions } from "@/utils/favicon-generator/general-info";
 import type { DesktopBrowserOptions } from "@/utils/favicon-generator/desktop-browser";
-import { generateAssets } from "@/utils/favicon-generator/generate-assets";
 import {
   ArrowDownload16Filled,
   Sparkle16Filled,
@@ -95,6 +94,10 @@ import { computed } from "vue";
 import SiteWebManifest from "./SiteWebManifest.vue";
 
 const message = useMessage();
+
+const generateAssetsPromise = import(
+  "@/utils/favicon-generator/generate-assets"
+).then((m) => m.generateAssets);
 
 const props = defineProps<{
   image: Blob | undefined;
@@ -113,6 +116,8 @@ const download = async () => {
     if (props.image === undefined) {
       throw new Error("No image selected");
     }
+
+    const generateAssets = await generateAssetsPromise;
 
     const blob = await generateAssets(props.image, {
       generalInfo: props.generalInfoOptions,

@@ -27,7 +27,7 @@ import { computed, ref } from "vue";
 import { useElementSize } from "@vueuse/core";
 import { NSkeleton } from "naive-ui";
 
-const iosHomescreenBackground = ref<HTMLImageElement | null>(null);
+const iosHomescreenBackground = ref<HTMLImageElement>();
 const { width, height } = useElementSize(iosHomescreenBackground);
 
 const props = defineProps<{

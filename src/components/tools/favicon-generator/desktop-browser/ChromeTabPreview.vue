@@ -29,7 +29,7 @@ import DesktopBrowserImage from "./DesktopBrowserImage.vue";
 import { ref } from "vue";
 import { useElementSize } from "@vueuse/core";
 
-const tab = ref<HTMLDivElement | null>(null);
+const tab = ref<HTMLDivElement>();
 const { width, height } = useElementSize(tab);
 
 const props = defineProps<{
