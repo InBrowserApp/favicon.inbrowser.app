@@ -27,6 +27,9 @@ import {
   getHTMLCode,
 } from "@/utils/favicon-generator/ios-web-clip";
 import { computed } from "vue";
+import { useMessage } from "naive-ui";
+
+const message = useMessage();
 
 const props = defineProps<{
   image: Blob | undefined;
@@ -42,17 +45,21 @@ const image = computed<Blob | undefined>(() => {
 });
 
 const download = async () => {
-  if (image.value === undefined) {
-    throw new Error("No image");
+  try {
+    if (image.value === undefined) {
+      throw new Error("No image selected");
+    }
+
+    const blob = await generateOutput(image.value, props.options);
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "apple-touch-icon.png";
+    a.click();
+  } catch (e) {
+    message.error((e as Error).message);
   }
-
-  const blob = await generateOutput(image.value, props.options);
-  const url = URL.createObjectURL(blob);
-
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = "apple-touch-icon.png";
-  a.click();
 };
 
 const code = computed(() => {

@@ -43,7 +43,7 @@
 </template>
 
 <script setup lang="ts">
-import { NButton, NIcon, NCode, NP, NText } from "naive-ui";
+import { NButton, NIcon, NCode, NP, NText, useMessage } from "naive-ui";
 import type { DesktopBrowserOptions } from "@/utils/favicon-generator/desktop-browser";
 import { ArrowDownload16Filled, Sparkle16Filled } from "@vicons/fluent";
 import {
@@ -53,6 +53,8 @@ import {
   generateFaviconSVG,
 } from "@/utils/favicon-generator/desktop-browser";
 import { computed } from "vue";
+
+const message = useMessage();
 
 const props = defineProps<{
   image: Blob | undefined;
@@ -68,59 +70,74 @@ const image = computed<Blob | undefined>(() => {
 });
 
 const downloadico = async () => {
-  if (image.value === undefined) {
-    throw new Error("No image");
+  try {
+    if (image.value === undefined) {
+      throw new Error("No image selected");
+    }
+
+    const blob = await generateFaviconICO(image.value, props.options);
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "favicon.ico";
+    a.click();
+  } catch (e) {
+    message.error((e as Error).message);
   }
-
-  const blob = await generateFaviconICO(image.value, props.options);
-  const url = URL.createObjectURL(blob);
-
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = "favicon.ico";
-  a.click();
 };
 
 const download32png = async () => {
-  if (image.value === undefined) {
-    throw new Error("No image");
+  try {
+    if (image.value === undefined) {
+      throw new Error("No image selected");
+    }
+    const blob = await generateFaviconPNG(image.value, props.options, 32);
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "favicon-32x32.png";
+    a.click();
+  } catch (e) {
+    message.error((e as Error).message);
   }
-
-  const blob = await generateFaviconPNG(image.value, props.options, 32);
-  const url = URL.createObjectURL(blob);
-
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = "favicon-32x32.png";
-  a.click();
 };
 
 const download16png = async () => {
-  if (image.value === undefined) {
-    throw new Error("No image");
+  try {
+    if (image.value === undefined) {
+      throw new Error("No image selected");
+    }
+
+    const blob = await generateFaviconPNG(image.value, props.options, 16);
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "favicon-16x16.png";
+    a.click();
+  } catch (e) {
+    message.error((e as Error).message);
   }
-
-  const blob = await generateFaviconPNG(image.value, props.options, 16);
-  const url = URL.createObjectURL(blob);
-
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = "favicon-16x16.png";
-  a.click();
 };
 
 const downloadSVG = async () => {
-  if (image.value === undefined) {
-    throw new Error("No image");
+  try {
+    if (image.value === undefined) {
+      throw new Error("No image selected");
+    }
+
+    const blob = await generateFaviconSVG(image.value, props.options);
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "favicon.svg";
+    a.click();
+  } catch (e) {
+    message.error((e as Error).message);
   }
-
-  const blob = await generateFaviconSVG(image.value, props.options);
-  const url = URL.createObjectURL(blob);
-
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = "favicon.svg";
-  a.click();
 };
 
 const iconMime = computed(() => {

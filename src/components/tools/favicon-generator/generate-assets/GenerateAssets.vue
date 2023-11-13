@@ -76,6 +76,7 @@ import {
   NTag,
   NPopover,
   NScrollbar,
+  useMessage,
 } from "naive-ui";
 import type { iOSWebClipOptions } from "@/utils/favicon-generator/ios-web-clip";
 import type { PWAOptions } from "@/utils/favicon-generator/pwa";
@@ -93,6 +94,8 @@ import { normalizePath } from "@/utils/favicon-generator/general-info";
 import { computed } from "vue";
 import SiteWebManifest from "./SiteWebManifest.vue";
 
+const message = useMessage();
+
 const props = defineProps<{
   image: Blob | undefined;
   pwaOptions: PWAOptions;
@@ -106,16 +109,24 @@ const prefix = computed(() => {
 });
 
 const download = async () => {
-  const blob = await generateAssets(props.image, {
-    generalInfo: props.generalInfoOptions,
-    desktopBrowser: props.desktopBrowserOptions,
-    pwa: props.pwaOptions,
-    iosWebClip: props.iosWebClipOptions,
-  });
+  try {
+    if (props.image === undefined) {
+      throw new Error("No image selected");
+    }
 
-  const a = document.createElement("a");
-  a.href = URL.createObjectURL(blob);
-  a.download = "favicon-assets.zip";
-  a.click();
+    const blob = await generateAssets(props.image, {
+      generalInfo: props.generalInfoOptions,
+      desktopBrowser: props.desktopBrowserOptions,
+      pwa: props.pwaOptions,
+      iosWebClip: props.iosWebClipOptions,
+    });
+
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "favicon-assets.zip";
+    a.click();
+  } catch (e) {
+    message.error((e as Error).message);
+  }
 };
 </script>

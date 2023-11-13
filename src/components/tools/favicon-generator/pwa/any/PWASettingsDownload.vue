@@ -30,6 +30,9 @@ import type { PWAOptions } from "@/utils/favicon-generator/pwa";
 import { ArrowDownload16Filled, Sparkle16Filled } from "@vicons/fluent";
 import { generatePWAPNG } from "@/utils/favicon-generator/pwa";
 import { computed } from "vue";
+import { useMessage } from "naive-ui";
+
+const message = useMessage();
 
 const props = defineProps<{
   image: Blob | undefined;
@@ -45,31 +48,39 @@ const image = computed<Blob | undefined>(() => {
 });
 
 const download192png = async () => {
-  if (image.value === undefined) {
-    throw new Error("No image");
+  try {
+    if (image.value === undefined) {
+      throw new Error("No image selected");
+    }
+
+    const blob = await generatePWAPNG(image.value, props.options, 192);
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "pwa-192x192.png";
+    a.click();
+  } catch (e) {
+    message.error((e as Error).message);
   }
-
-  const blob = await generatePWAPNG(image.value, props.options, 192);
-  const url = URL.createObjectURL(blob);
-
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = "pwa-192x192.png";
-  a.click();
 };
 
 const download512png = async () => {
-  if (image.value === undefined) {
-    throw new Error("No image");
+  try {
+    if (image.value === undefined) {
+      throw new Error("No image selected");
+    }
+
+    const blob = await generatePWAPNG(image.value, props.options, 512);
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "pwa-512x512.png";
+    a.click();
+  } catch (e) {
+    message.error((e as Error).message);
   }
-
-  const blob = await generatePWAPNG(image.value, props.options, 512);
-  const url = URL.createObjectURL(blob);
-
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = "pwa-512x512.png";
-  a.click();
 };
 
 const code = computed(() => {

@@ -30,6 +30,9 @@ import type { PWAOptions } from "@/utils/favicon-generator/pwa";
 import { ArrowDownload16Filled, Sparkle16Filled } from "@vicons/fluent";
 import { generatePWAMaskablePNG } from "@/utils/favicon-generator/pwa";
 import { computed } from "vue";
+import { useMessage } from "naive-ui";
+
+const message = useMessage();
 
 const props = defineProps<{
   image: Blob | undefined;
@@ -37,23 +40,39 @@ const props = defineProps<{
 }>();
 
 const download192png = async () => {
-  const blob = await generatePWAMaskablePNG(props.image, props.options, 192);
-  const url = URL.createObjectURL(blob);
+  try {
+    if (props.image === undefined) {
+      throw new Error("No image selected");
+    }
 
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = "pwa-maskable-192x192.png";
-  a.click();
+    const blob = await generatePWAMaskablePNG(props.image, props.options, 192);
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "pwa-maskable-192x192.png";
+    a.click();
+  } catch (e) {
+    message.error((e as Error).message);
+  }
 };
 
 const download512png = async () => {
-  const blob = await generatePWAMaskablePNG(props.image, props.options, 512);
-  const url = URL.createObjectURL(blob);
+  try {
+    if (props.image === undefined) {
+      throw new Error("No image selected");
+    }
 
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = "pwa-maskable-512x512.png";
-  a.click();
+    const blob = await generatePWAMaskablePNG(props.image, props.options, 512);
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "pwa-maskable-512x512.png";
+    a.click();
+  } catch (e) {
+    message.error((e as Error).message);
+  }
 };
 
 const code = computed(() => {
