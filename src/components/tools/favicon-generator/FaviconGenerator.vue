@@ -26,7 +26,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { ref } from "vue";
 import iOSWebClip from "./ios-web-clip/iOSWebClip.vue";
 import GeneralInfo from "./general-info/GeneralInfo.vue";
 import type { iOSWebClipOptions } from "@/utils/favicon-generator/ios-web-clip";
@@ -39,13 +39,6 @@ import GenerateAssets from "./generate-assets/GenerateAssets.vue";
 import SelectFile from "./select-file/SelectFile.vue";
 
 const image = ref<Blob | undefined>(undefined);
-// FIXME: temp image
-
-onMounted(async () => {
-  const res = await fetch("/favicon.svg");
-  const blob = await res.blob();
-  image.value = blob;
-});
 
 const iosOptions = ref<iOSWebClipOptions>({
   backgroundColor: "#FFFFFF",
