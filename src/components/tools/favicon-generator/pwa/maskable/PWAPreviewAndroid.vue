@@ -13,7 +13,8 @@
     />
     <div class="icon-container">
       <div class="icon-background" :style="iconBackgroundStyle" />
-      <img :src="imageURL" class="icon" :style="iconStyle" />
+      <n-skeleton v-if="image === undefined" class="icon" />
+      <img v-else :src="imageURL" class="icon" :style="iconStyle" />
     </div>
   </div>
 </template>
@@ -24,6 +25,7 @@ import { useObjectUrl } from "@vueuse/core";
 import type { PWAOptions } from "@/utils/favicon-generator/pwa";
 import { computed, ref } from "vue";
 import { useElementSize } from "@vueuse/core";
+import { NSkeleton } from "naive-ui";
 
 const iosHomescreenBackground = ref<HTMLImageElement | null>(null);
 const { width, height } = useElementSize(iosHomescreenBackground);

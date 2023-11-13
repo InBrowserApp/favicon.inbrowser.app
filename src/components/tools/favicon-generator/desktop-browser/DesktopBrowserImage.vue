@@ -5,7 +5,10 @@
       class="desktop-browser-image-background"
       :style="iconBackgroundStyle"
     />
+
+    <n-skeleton v-if="image === undefined" class="desktop-browser-image" />
     <img
+      v-else
       :src="imageURL"
       class="desktop-browser-image"
       :style="iconStyle"
@@ -20,6 +23,7 @@
 import { useObjectUrl } from "@vueuse/core";
 import type { DesktopBrowserOptions } from "@/utils/favicon-generator/desktop-browser";
 import { computed } from "vue";
+import { NSkeleton } from "naive-ui";
 
 const props = defineProps<{
   image: Blob | undefined;
