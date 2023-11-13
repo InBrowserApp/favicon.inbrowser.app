@@ -55,6 +55,9 @@ body {
     display: flex;
     place-items: center;
     padding-right: 80px;
+    position: sticky;
+    top: 2rem;
+    max-height: calc(100vh - 4rem) !important;
   }
 
   .app {
