@@ -3,15 +3,15 @@
     <n-icon :component="Apple" style="vertical-align: -0.15em" />
     iOS Web Clip
   </n-h2>
-  <n-grid x-gap="30" :cols="5">
-    <n-grid-item :span="2">
+  <n-grid x-gap="30" y-gap="20" :cols="5" item-responsive responsive="screen">
+    <n-grid-item span="5 s:2">
       <iOSWebClipPreview
         :image="image"
         :options="options"
         :name="generalInfoOptions.short_name"
       />
     </n-grid-item>
-    <n-grid-item :span="3">
+    <n-grid-item span="5 s:3">
       <iOSWebClipSettings :image="image" v-model:options="options" />
     </n-grid-item>
   </n-grid>

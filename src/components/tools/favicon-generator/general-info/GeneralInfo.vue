@@ -4,19 +4,19 @@
     General Info
   </n-h2>
   <n-p>
-    <n-button
-      text
-      tag="a"
+    <a
       href="https://developer.mozilla.org/en-US/docs/Web/Manifest"
       target="_blank"
-      style="vertical-align: -0.15em"
+      class="link"
     >
-      <template #icon>
-        <n-icon :component="BookInformation20Regular" />
-      </template>
+      <n-icon
+        :component="BookInformation20Regular"
+        style="vertical-align: -0.15em;"
+        size="1.2em"
+      />
 
       Check out Web app manifests reference for more information.
-    </n-button>
+    </a>
   </n-p>
   <n-grid x-gap="30" :cols="4">
     <n-grid-item :span="2">
@@ -136,3 +136,14 @@ const displayOptions = [
   { label: "Browser", value: "browser" },
 ];
 </script>
+
+<style scoped>
+.link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+</style>

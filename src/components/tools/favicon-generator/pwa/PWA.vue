@@ -4,47 +4,48 @@
     Progressive Web App (PWA)
   </n-h2>
   <n-p>
-    <n-button
-      text
-      tag="a"
+    <a
       href="https://web.dev/articles/maskable-icon"
       target="_blank"
-      style="vertical-align: -0.15em"
+      class="link"
     >
-      <template #icon>
-        <n-icon :component="BookInformation20Regular" />
-      </template>
+      <n-icon
+        :component="BookInformation20Regular"
+        style="vertical-align: -0.15em;"
+        size="1.2em"
+      />
+
       What's the difference between &nbsp;<n-text code>"purpose": "any"</n-text
       >&nbsp; and &nbsp;<n-text code>"purpose": "maskable"</n-text>?
-    </n-button>
+    </a>
   </n-p>
   <n-h3 prefix="bar" align-text>
     PWA <n-text code>"purpose": "any"</n-text>
   </n-h3>
-  <n-grid x-gap="30" :cols="5">
-    <n-grid-item :span="2">
+  <n-grid x-gap="30" y-gap="20" :cols="5" item-responsive responsive="screen">
+    <n-grid-item span="5 s:2">
       <PWAPreview
         :image="image"
         :options="options"
         :general-info-options="generalInfoOptions"
       />
     </n-grid-item>
-    <n-grid-item :span="3">
+    <n-grid-item span="5 s:3">
       <PWASettings :image="image" v-model:options="options" />
     </n-grid-item>
   </n-grid>
   <n-h3 prefix="bar" align-text>
     PWA <n-text code>"purpose": "maskable"</n-text>
   </n-h3>
-  <n-grid x-gap="30" :cols="5">
-    <n-grid-item :span="2">
+  <n-grid x-gap="30" y-gap="20" :cols="5" item-responsive responsive="screen">
+    <n-grid-item span="5 s:2">
       <PWAMaskablePreview
         :image="image"
         :options="options"
         :general-info-options="generalInfoOptions"
       />
     </n-grid-item>
-    <n-grid-item :span="3">
+    <n-grid-item span="5 s:3">
       <PWAMaskableSettings :image="image" v-model:options="options" />
     </n-grid-item>
   </n-grid>
@@ -81,3 +82,14 @@ const emit = defineEmits(["update:options"]);
 
 const options = useVModel(props, "options", emit);
 </script>
+
+<style scoped>
+.link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+</style>

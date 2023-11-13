@@ -1,5 +1,5 @@
 <template>
-  <n-code language="html" :code="code" />
+  <n-code language="html" :code="code" :word-wrap="true" />
 </template>
 
 <script setup lang="ts">
