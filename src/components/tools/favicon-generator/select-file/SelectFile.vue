@@ -19,6 +19,12 @@
     </template>
     <template v-else>
       <ImageUpload @update:file="image = $event" />
+      <n-button size="small" text @click="useDemoIcon">
+        <template #icon>
+          <n-icon :component="Icons20Regular" />
+        </template>
+        Use Demo Icon
+      </n-button>
     </template>
   </n-p>
 </template>
@@ -27,7 +33,7 @@
 import { useVModel, useObjectUrl } from "@vueuse/core";
 import ImageUpload from "../ImageUpload.vue";
 import { NButton, NP, NIcon } from "naive-ui";
-import { Delete16Regular } from "@vicons/fluent";
+import { Delete16Regular, Icons20Regular } from "@vicons/fluent";
 import { getImageSize } from "@/utils/image/get-image-size";
 import { computedAsync } from "@vueuse/core";
 
@@ -50,6 +56,12 @@ const imageSize = computedAsync(async () => {
   const { height, width } = await getImageSize(image.value);
   return `${width}x${height}`;
 });
+
+const useDemoIcon = async () => {
+  const response = await fetch("/favicon.svg");
+  const blob = await response.blob();
+  image.value = blob;
+};
 </script>
 
 <style scoped>
