@@ -1,5 +1,5 @@
 <template>
-  <ImageUpload @update:file="image = $event" />
+  <SelectFile v-model:image="image" />
   <GeneralInfo v-model:options="generalInfoOptions" />
   <DesktopBrowser
     :image="image"
@@ -26,7 +26,6 @@
 </template>
 
 <script setup lang="ts">
-import ImageUpload from "./ImageUpload.vue";
 import { ref, onMounted } from "vue";
 import iOSWebClip from "./ios-web-clip/iOSWebClip.vue";
 import GeneralInfo from "./general-info/GeneralInfo.vue";
@@ -37,6 +36,7 @@ import type { DesktopBrowserOptions } from "@/utils/favicon-generator/desktop-br
 import PWA from "./pwa/PWA.vue";
 import type { PWAOptions } from "@/utils/favicon-generator/pwa";
 import GenerateAssets from "./generate-assets/GenerateAssets.vue";
+import SelectFile from "./select-file/SelectFile.vue";
 
 const image = ref<Blob | undefined>(undefined);
 // FIXME: temp image
