@@ -2,7 +2,6 @@ import type { GeneralInfoOptions } from "../general-info";
 import type { DesktopBrowserOptions } from "../desktop-browser";
 import type { PWAOptions } from "../pwa";
 import type { iOSWebClipOptions } from "../ios-web-clip";
-import { BlobReader, BlobWriter, ZipWriter } from "@zip.js/zip.js";
 import { generateAssets as generateiOSAssets } from "../ios-web-clip";
 import { generateAssets as generatePWAAssets } from "../pwa";
 import { generateAssets as generateDesktopBrowserAssets } from "../desktop-browser";
@@ -24,6 +23,8 @@ export async function generateAssets(
   image: Blob | undefined,
   options: GenerateAssetsOptions
 ): Promise<Blob> {
+  const zipJSPromise = import("@zip.js/zip.js");
+
   const assets: Asset[] = [];
 
   const assetsList = await Promise.all([
@@ -36,6 +37,8 @@ export async function generateAssets(
   for (const asset of assetsList) {
     assets.push(...asset);
   }
+
+  const { BlobReader, BlobWriter, ZipWriter } = await zipJSPromise;
 
   const zipFileWriter = new BlobWriter();
 
