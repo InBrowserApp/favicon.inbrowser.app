@@ -1,6 +1,10 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
-import FaviconGeneratorView from "../views/FaviconGeneratorView.vue";
+import { defineAsyncComponent } from "vue";
+
+const FaviconGeneratorView = defineAsyncComponent(() =>
+  import("../views/FaviconGeneratorView.vue").then((m) => m.default)
+);
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

@@ -6,12 +6,16 @@ import { VitePWA } from "vite-plugin-pwa";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  optimizeDeps: {
+    needsInterop: ["svgo"],
+  },
   plugins: [
     vue(),
     VitePWA({
       includeAssets: ["favicon.ico", "favicon.svg", "apple-touch-icon.png"],
+      registerType: "autoUpdate",
       workbox: {
-        globPatterns: ["assets/*", "**/*.{js,css,html}"],
+        globPatterns: ["**/*.{js,css,html,wasm,webp}"],
         maximumFileSizeToCacheInBytes: 10000000,
       },
       manifest: {
