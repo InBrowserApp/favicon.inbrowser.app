@@ -13,8 +13,7 @@ export async function generateFaviconPNG(
   }
 
   const { height, width } = await getImageSize(blob);
-  console.log("height", height);
-  console.log("width", width);
+
   const imageMaxSize = Math.max(height, width);
 
   // Create a new canvas element

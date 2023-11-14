@@ -2,8 +2,6 @@ import { getImageSize } from "./get-image-size";
 
 export async function preprocessImage(blob: Blob): Promise<Blob> {
   const { height, width } = await getImageSize(blob);
-  console.log("height", height);
-  console.log("width", width);
 
   // Create a new canvas element
   const canvas = document.createElement("canvas");
