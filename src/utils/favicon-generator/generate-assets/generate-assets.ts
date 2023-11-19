@@ -14,28 +14,23 @@ export interface GenerateAssetsOptions {
   iosWebClip: iOSWebClipOptions;
 }
 
-interface Asset {
-  name: string;
-  blob: Blob;
-}
-
 export async function generateAssets(
   image: Blob | undefined,
   options: GenerateAssetsOptions
 ): Promise<Blob> {
   const zipJSPromise = import("@zip.js/zip.js");
 
-  const assets: Asset[] = [];
+  const files: File[] = [];
 
-  const assetsList = await Promise.all([
+  const filesList = await Promise.all([
     generateiOSAssets(image, options.iosWebClip),
     generatePWAAssets(image, options.pwa),
     generateDesktopBrowserAssets(image, options.desktopBrowser),
     generateGeneralAssets(options.generalInfo),
   ]);
 
-  for (const asset of assetsList) {
-    assets.push(...asset);
+  for (const asset of filesList) {
+    files.push(...asset);
   }
 
   const { BlobReader, BlobWriter, ZipWriter } = await zipJSPromise;
@@ -43,8 +38,8 @@ export async function generateAssets(
   const zipFileWriter = new BlobWriter();
 
   const zipWriter = new ZipWriter(zipFileWriter);
-  for (const asset of assets) {
-    await zipWriter.add(asset.name, new BlobReader(asset.blob));
+  for (const file of files) {
+    await zipWriter.add(file.name, new BlobReader(file));
   }
 
   await zipWriter.close();
