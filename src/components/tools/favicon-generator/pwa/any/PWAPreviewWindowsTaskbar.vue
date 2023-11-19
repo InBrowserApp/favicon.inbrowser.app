@@ -1,6 +1,10 @@
 <template>
   <div class="container">
-    <img :src="PreviewBackground" class="background" />
+    <img
+      :src="PreviewBackground"
+      class="background"
+      alt="Windows Taskbar Background"
+    />
     <div class="icon-container">
       <div class="icon-background" :style="iconBackgroundStyle" />
       <n-skeleton v-if="image === undefined" class="icon" />

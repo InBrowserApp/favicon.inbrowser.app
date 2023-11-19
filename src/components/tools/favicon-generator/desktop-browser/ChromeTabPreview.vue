@@ -6,7 +6,12 @@
       '--chrome-tab-preview-tab-height': height + 'px',
     }"
   >
-    <img :src="chromeTabURL" class="chrome-tab-image" ref="tab" />
+    <img
+      :src="chromeTabURL"
+      class="chrome-tab-image"
+      ref="tab"
+      alt="Chrome Tab"
+    />
     <DesktopBrowserImage :image="image" :options="options" class="icon" />
     <div
       class="site-name"

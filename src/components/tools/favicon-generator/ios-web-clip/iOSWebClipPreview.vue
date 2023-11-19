@@ -10,6 +10,7 @@
       :src="PreviewBackground"
       class="background"
       ref="iosHomescreenBackground"
+      alt="iOS Homescreen Background"
     />
     <div class="icon-container">
       <div class="icon-background" :style="iconBackgroundStyle" />
