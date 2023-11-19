@@ -1,15 +1,9 @@
 <template>
-  <div
-    class="container"
-    :style="{
-      '--ios-homescreen-background-width': width + 'px',
-      '--ios-homescreen-background-height': height + 'px',
-    }"
-  >
+  <div class="container">
     <img
       :src="PreviewBackground"
       class="background"
-      ref="iosHomescreenBackground"
+      alt="Android Launcher Background"
     />
     <div class="icon-container">
       <div class="icon-background" :style="iconBackgroundStyle" />
@@ -23,12 +17,8 @@
 import PreviewBackground from "./android-launcher.webp";
 import { useObjectUrl } from "@vueuse/core";
 import type { PWAOptions } from "@/utils/favicon-generator/pwa";
-import { computed, ref } from "vue";
-import { useElementSize } from "@vueuse/core";
+import { computed } from "vue";
 import { NSkeleton } from "naive-ui";
-
-const iosHomescreenBackground = ref<HTMLImageElement>();
-const { width, height } = useElementSize(iosHomescreenBackground);
 
 const props = defineProps<{
   image: Blob | undefined;
