@@ -24,10 +24,6 @@ const prefix = computed(() => {
 });
 
 const code = computed(() => {
-  if (props.image === undefined) {
-    return "";
-  }
-
   const lines: string[] = [];
 
   // iOS Web Clip
@@ -40,7 +36,7 @@ const code = computed(() => {
 
   if (
     props.desktopBrowserOptions.original &&
-    desktopImage.type === "image/svg+xml"
+    (desktopImage === undefined || desktopImage.type === "image/svg+xml")
   ) {
     // <link rel="icon" href="/favicon.ico" sizes="48x48" >
     // <link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml">
