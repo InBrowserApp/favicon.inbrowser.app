@@ -80,7 +80,7 @@ const chromeTabURL = computed(() => {
 }
 
 .site-name {
-  position: relative;
+  position: absolute;
   left: calc(94 / var(--tab-width) * 100%);
   top: calc(20 / var(--tab-height) * 100%);
   max-width: 65%;
