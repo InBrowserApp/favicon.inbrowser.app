@@ -68,7 +68,7 @@ const code = computed(() => {
     );
   } else {
     lines.push(
-      `<meta name="theme-color" content="${props.generalInfoOptions.theme_color}"">`
+      `<meta name="theme-color" content="${props.generalInfoOptions.theme_color}">`
     );
   }
 
